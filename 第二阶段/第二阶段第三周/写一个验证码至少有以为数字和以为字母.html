@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+    function randomCode(count){
+        var num= '0123456789';
+        var str = ''; 
+        var str2 = '';
+        for(var i = 97;i<123;i++){
+            str+=String.fromCharCode(i);
+        }
+        str = str+str.toUpperCase();
+        str2 = num.charAt(Math.floor(Math.random()*num.length));
+        str2+=str.charAt(Math.floor(Math.random()*str.length));
+        str=str+num;
+        for(var j = 0;j<count-2;j++){
+            str2+=str.charAt(Math.floor(Math.random()*str.length));
+        }
+        console.log(str2);
+        str2 = daluan(str2);
+        console.log(str2);
+    }
+    randomCode(6);
+    function daluan(a){
+        a = a.split('');
+        var arr = [];
+        for(var i = 0,length=a.length;i<length;i++){
+            var _random = Math.floor(Math.random()*a.length)
+            arr[i] = a[ _random];
+            a.splice(_random,1);
+        }
+        return arr.join('');
+    }
+    </script>
+</body>
+</html>

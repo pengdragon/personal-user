@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+       // 只能实例化一次对象, 以后你在实例化, 返回第一次的结果
+       //  数据可以同步
+
+      //  应用场景
+      //  存储用户数据 
+        var pserson = {
+        }
+      //  模态框 (html中写样式写内容)
+    
+    //   懒单例模式
+
+    // 获取用户信息
+    var UserInfo = (function(){
+        var instance = null;
+        return function(name, avatar) {
+            if(!instance) {
+                instance = {
+                    name: name,
+                    avatar: avatar,
+                    setName(){},
+                    getinfo() {}
+                }
+            }
+            return instance;
+        }
+    }())
+
+    var user = new UserInfo('xixi', 'xxxxxx');
+    var user2 = new UserInfo('oop');
+    user.name="ppp";
+    user2.avatar = 'llllllllllllllll';
+    console.log(user);
+    console.log(user2);
+        
+    </script>
+</body>
+</html>

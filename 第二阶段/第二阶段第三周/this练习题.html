@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        var name = "a";
+        var person = {
+            name: 'b',
+            details: {
+                name: 'c',
+                print: function () {
+                    return this.name;
+                }
+            },
+            print: function () {
+
+                return this.name;
+            }
+        };
+        console.log(person.details.print());//c
+        console.log(person.print());//b
+        var   name1 =person.print;
+        var   name2 =person.details;
+        console.log(name1());//a
+        console.log(name2.print())//c
+
+    </script>
+</body>
+
+</html>

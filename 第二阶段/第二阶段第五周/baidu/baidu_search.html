@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>搜索框</title>
+    <style>
+        ul {
+            display: none;
+        }
+    
+    </style>
+</head>
+
+<body>
+    <div class="search_box"> 
+        <input type="text" class="search_input">
+        <ul class="search_result">
+            <li>千锋迎来事业的高潮</li>
+            <li>惊天大秘密,前台打印机遭人摧毁,1810班该何去何从</li>
+        </ul>
+    </div>
+
+    <script src="js/jsonp.js"></script>
+    <!-- <script src="js/ajax.js"></script> -->
+    <script>
+        const searchInp = (function(){
+            function fn() {
+
+            }
+            return {
+                init(ele) {
+                    this.$searchBox = document.querySelector(ele);
+                    this.$searchInp = this.$searchBox.querySelector('.search_input');
+                    this.$searchRes = this.$searchBox.querySelector('.search_result');
+                    this.event();
+                },
+                event() {
+                    const _this = this;
+                    const $inp = this.$searchInp
+                    $inp.oninput = function() {
+                        if(this.value != '') {
+                            // 获取数据
+                            clearTimeout(this.time);
+                            // 减少http请求
+                            this.time = setTimeout(_ => {
+                                _this.getData(this.value);
+                            }, 500)
+                        } else {
+                            _this.$searchRes.style.display = 'none';
+                        }
+                    }
+                    $inp.onfocus = function() {
+                        if(this.value != '') {
+                            _this.$searchRes.style.display = 'block';
+                        }
+
+                    }
+                    $inp.onblur = function() {
+                        // 隐藏结果栏
+                        _this.$searchRes.style.display = 'none';
+
+                    }
+                },
+                // 获取数据
+                getData(val) {
+                   const _this = this;
+                //    sendAjax('json/search.json', {
+                //        data: {
+                //            wd: val
+                //        }
+                //    }).then(data => {
+                //        console.log(data);
+                //        data = JSON.parse(data);
+                //        _this.insertData(data.s);
+                //    })
+                    sendJsonp('https://sp0.baidu.com/5a1Fazu8AA54nxGko9WTAnF6hhy/su', {
+                        wd: val,
+                        cb: "insertData"
+                    })
+                },
+                // 把数据渲染到列表中
+                insertData(data) {
+                    console.log(data);
+                    data = data.s;
+                    this.$searchRes.innerHTML = '';
+                    for(let i = 0; i < data.length; i++) {
+                        let $li = document.createElement('li');
+                        $li.innerHTML = data[i];
+                        this.$searchRes.appendChild($li);
+                    }
+                    this.$searchRes.style.display = 'block';
+                }
+            }
+        }())
+        searchInp.init('.search_box');
+
+
+    </script>
+    <script>
+        // call, apply, bind
+       var insertData = searchInp.insertData.bind(searchInp);
+        
+    </script>
+    <!-- <script> searchInp.insertData('查询完所输入的数据后悔返回与之匹配的返回值') </script> -->
+</body>
+
+</html>

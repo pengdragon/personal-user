@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+
+    <input type="text" id="username" name="username">
+    <input type="text" id="password" name="password">
+    <button id="btn">登录</button>
+    <button id="js">结算</button>
+
+    <script src="../JS/ajax0.1.0.js"></script>
+    <script src="cookie.js"></script>
+    <script>
+
+        //console.log(username);
+        function send(){
+            var valu = username.value;
+            var valp = password.value;
+            //console.log(valp);
+          cookie.setItem('username',valu,1);
+          cookie.setItem('password',valp,1); 
+            sendAjax('cookie.php',{data:{$username:valu,$password:valp}})
+            .then(res=>{
+                console.log(res);
+                res=res.slice(0,1);
+                console.log(res)
+               if(res=='1')
+               alert('登录成功');
+               else
+               alert('请输入正确的用户名或密码');
+               
+            })
+        }
+        //登录
+        btn.onmousedown=function(){
+            send();
+        }
+        //cookie.clear();
+       // console.log(cookie.getItem('username'));
+       //结算
+        js.onmousedown = function(){
+            sendAjax('cookie.php',{data:{}})
+            .then(res=>{
+                console.log(res) 
+                 $href = res.slice(1);
+                res= res.slice(0,1);            
+                if(res=='1')
+               location.href=$href;
+                else
+                alert('请先登录');
+            })
+        }
+        
+      
+    </script>
+</body>
+</html>

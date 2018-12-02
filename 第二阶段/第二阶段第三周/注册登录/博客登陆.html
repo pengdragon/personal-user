@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        form,p,input,button{margin:0;padding:0}
+        fieldset{
+        background: pink;
+        width:400px;    
+        margin:50px auto;
+    }
+    legend{text-align:center;
+        font-size: 30px;
+        font-weight: bold;
+    }
+    p:nth-of-type(2n+1){
+        display: block;
+        font-weight: bold;
+        width:300px;
+       
+    }
+    p:nth-of-type(2n){
+        display: block;
+        background: #ccc;
+        height: 16px;
+       display: none;
+        margin-top:5px;
+    }
+    .success{
+        border:2px solid greenyellow;
+    }
+    .error{
+        border: 2px solid red;
+    }
+    </style>
+</head>
+<body>
+    <form action="" onsubmit="return false">
+          <!-- 把这个写进fieldset  disabled="disabled"禁止在文本框输入 -->
+        <fieldset id='box'>
+        <legend>登录scdn</legend>
+        <p>用户名</p>
+        <input type="text" placeholder="请输入用户名">
+        <p>需要输入8-12位以字母开头数字字母下划线组成</p>
+
+        <p>手机号</p>
+        <input type="text" placeholder="请输入手机号">
+        <p>请输入以13/15/17/18/19开头的11位手机号</p>
+
+        <p>密码</p>
+        <input type="text" placeholder="请设置密码">
+        <p>密码至少是8位以上的数字字母下划线组</p>
+
+        <p>再次输入密码</p>
+        <input type="text" placeholder="请设置密码">
+        <p>设置密码必须一致</p>
+        <button>登录</button>
+    </fieldset>
+    </form>
+    <script src="博客登陆.js"></script>
+    <script>
+    login.init('#box');
+    </script>
+</body>
+</html>

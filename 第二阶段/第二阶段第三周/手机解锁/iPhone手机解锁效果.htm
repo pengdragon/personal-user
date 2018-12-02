@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+
+<html>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<title>iPhone手机解锁效果</title>
+<style type="text/css">
+	#iphone {
+		position: relative;
+		width: 426px;
+		height: 640px;
+		margin: 10px auto;
+		background: url(images/iphone.jpg) no-repeat;
+	}
+
+	#lock {
+		/* 整体定位到iphobe中下放  */
+		position: absolute;
+		/* 在父级中类似居中 */
+		left: 50%;
+		bottom: 33px;
+		width: 358px;
+		height: 62px;
+		margin-left: -179px;
+	}
+
+	#lock span {
+		/* 滑块位置的变动所以用定位，用了决对定位后脱离文档流，因此行元素可设置宽高 */
+		position: absolute;
+		width: 93px;
+		height: 62px;
+		cursor: pointer;
+		background: url(images/unlock_btn.jpg) no-repeat;
+	}
+</style>
+</head>
+
+<body>
+	<div id="iphone">
+		<div id="lock">
+			<span></span>
+		</div>
+	</div>
+	<script type="text/javascript" src="js/phone.js"></script>
+	<script>
+	 phone.init('iphone');
+	</script>
+</body>
+
+</html>

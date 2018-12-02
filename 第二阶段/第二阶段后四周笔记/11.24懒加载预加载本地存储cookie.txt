@@ -1,0 +1,82 @@
+jsonp的原理：
+script标签是可以主动向服务器请求资源的，利用了script标签没有同源策略的限制
+
+机器人：key: a946ca33d10544a68e8f3844ff03e6e4
+	info: '输入的内容'；
+
+图片的懒加载
+1）只是一种思想
+2）只加载用户可视范围的图片，看不见的先不加载；
+3）优点：加快页面加载速度，降低资源浪费
+图片的预加载
+1）页面展示效果很强，需要图片加载成果后，才能展示；
+2）原因：因为图片网络情况不好的情况加载会一段一段加载，用户
+体验极差
+3）解决方法：等图片加载完成以后才显示img.onload;
+
+
+可能造成问题的代码，写到try中，
+如果try语句中，有代码错误，默认执行catch语句
+
+
+
+1本地存储 localStorage;
+A:设置值:localStorage.setItem('name',"小彭"）或者 localStorage.name='小彭'；
+B:没有过期时间，只要是同源，不管是多少会话都可以使用,都不会过期，
+除非手动删除localStorage.clear()或者localStorage.removeItem(key),还有一个是清除缓存；
+存储大小不限制；
+C:存值只能是字符串
+
+2）会话存储 sessionStorage 
+A:设置值:localStorage.setItem('name',"小彭"）或者 localStorage.name='小彭'；
+B:即当前会话结束就过期了 即页面一经变化就过期；存储大小不限制；
+C:存值只能是字符串；
+
+3）cookie即本地会话跟踪技术；也受同源策略的影响；
+A:设置cookie：document.cookie = 'username=xixi;';
+    设置cookie以及存活时间：document.cookie = "userid=111; max-age=60;"
+     max-age=60为存活时间；
+B:设置cookie后，发出的所有http请求都会携带cookie信息;
+   比如用户登录成功，把用户的验证信息（比如有id，唯一识别码）存
+   到cookie中；后台可以解析请求头获取当前传送的cookie信息；
+C:过期时间：如果不设置，默认当前浏览器关闭就过期
+
+E:cookie作用域
+F:如果没有设置作用域，默认当前文件夹以及子文件夹都可以使用cookie，
+   其他的不可以使用；只要在作用域内开多少个会话都可以访问到cookie值；
+G:cookie大小：2kb-4kb;
+
+H:cookie是服务器设置的，不是浏览器设置的
+
+cookie总结：同源策略
+1：不连接服务器是设置不了cookie的，本人试过，cookie是服务器设置的，不是浏览器设置的
+2：设置值格式：key=val;如果key重复，就会被覆盖；
+3：所设cookie的路径里都可以随时携带cookie，即可以访问到cookie;即大哥向服务端请求cookie，兄弟姐妹以及后代都可访问；
+4：过期时间：如果不设置，默认当前浏览器关闭就过期；
+5:  设置过期时间document.cookie = "userid=111; max-age=60;"max-age=60为存活时间
+                         document.cookie = "userid=111; expires="+date;date是一个时间对象设置好之后使用；
+6：如果设置的时间是过期的，document.cookie是已经设置了，但是获取不了里面的信息即里面的信息已失效；
+7）当前作用域设置cookie以后，每一次发送http都会携带cookie信息；
+注意：存储格式必须是字符串；
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

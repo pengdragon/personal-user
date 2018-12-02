@@ -1,0 +1,26 @@
+dom对象有个属性是classlist,简言之即class名字的一个集合，其是一个包含所有class名元素的一个数组；
+其方法目测需要掌握有三；
+1）$box.classlist.remove('current'),删除元素'current'，即dom对象的class名'current'被删除；
+2）$box.classlist.toggle('current'),如果dom元素class名有'current'就删除，如若没有，就添加；
+3）$box.classlist.add(''),在数组classlist最后添加一个需要的元素，级class名最后面又多了一个名字；
+
+dom元素中的属性className其值是一个字符串，可以使用字符串的方法，比如replace();
+在删除class属性值的时候，也可以用replace('current', '')方法来清空；即$box.className.replace('current', '')
+
+行内块多个元素排成一行会出现间隙的解决方案：
+1）设置字体大小为0；
+2）在行内块元素之间去除间隙；
+
+淡入淡出轮播图：
+1）显示和隐藏的方式来做；这样让隐藏的都脱离文档流，不占任何内存；
+2）for循环中 先让当前显示的图片透明度目标值为0 调用运动函数一下，删除所有图片的显示样式的class名，
+接着给需要显示的图片加上显示的class名，设置目标透明度为1，调用运动函数
+
+
+无限滑动轮播图：
+1）这个不是用显示隐藏来做，而是利用定位中的left来做，首先swrapper展示区的clientWidth,clientHeight和图片
+一样大，box中的图片全部设置成行内块，在同一行显示所有的图片，克隆第一张图片和最后一张图片，把克隆的
+第一张图片加到box的最后面，把克隆的最后一张图片加到box最前面，给boxd定位left大小为展示区的clientWdith;
+2）在$uu部分，点击每张按钮获取其索引让其添加样式，同时展示区需展示与按钮对应的图片，即让box的left改变来
+到达效果，left改变的大小为按钮的索引加1再乘以展示区的可用width再加负号；
+3）leftbtn部分，点击一下，this.index就会自减一次，此索引传给showImages,如果this.index<=0;未完待续

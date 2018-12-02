@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style type="text/css">
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        ul,
+        ol {
+            list-style: none;
+        }
+
+        .wrapper {
+            position: relative;
+            width: 670px;
+            height: 240px;
+            margin: 100px auto;
+            overflow: hidden;
+        }
+        #box {
+            position: absolute;
+            width: 9999px;
+            font-size: 0;
+        }
+        #box li {
+            /* float: left; */
+            display: inline-block;
+            
+        }
+        #uu {
+            position: absolute;
+            right: 30px;
+            bottom: 15px;
+        }
+        #uu li {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            line-height: 20px;
+            border-radius: 50%;
+            background-color: #fff;
+            text-align: center;
+        }
+        #uu li.current {
+            background-color: #000;
+            color: #fff;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="wrapper">
+        <ul id="box">
+            <li><img src="images/1.jpg" alt="" /></li>
+            <li><img src="images/2.jpg" alt="" /></li>
+            <li><img src="images/3.jpg" alt="" /></li>
+            <li><img src="images/4.jpg" alt="" /></li>
+            <li><img src="images/5.jpg" alt="" /></li>
+            <li><img src="images/6.jpg" alt="" /></li>
+        </ul>
+        <ol id="uu">
+            <li class="aa current">1</li>
+            <li>2</li>
+            <li>3</li>
+            <li>4</li>
+            <li>5</li>
+            <li>6</li>
+        </ol>
+    </div>
+</body>
+
+</html>
+<script src="js/getStyle.js"></script>
+<script src="js/move1.1.0.js"></script>
+<script type="text/javascript">
+    var swiper = (function () {
+        var $showBox = document.querySelector('.wrapper')
+        var $uu = document.querySelector('#uu');
+        var $uuLiAll = $uu.children;
+        var $box = document.querySelector('#box');
+        var timer = null;
+        var showIndex = 0;
+        return {
+            init: function () {
+                this.event();
+            },
+            event: function () {
+              var _this = this;
+              $uu.onclick = function(e) {
+                  e = e || window.event;
+                  var target = e.target || e.srcElement;
+                  if(target.nodeName == 'LI') {
+                      _this.showIamge(target.innerHTML - 1);
+                  }
+              }
+            },
+            showIamge: function (index) {
+                // console.log(index);
+                for(let i = 0; i < $uuLiAll.length; i++) {
+                    // $uuLiAll[i].className = '';
+                    console.log($uuLiAll[i].classList);
+                     //$uuLiAll[i].classList.remove('current');classList是一个元素是class名的数组；
+                     // $uuLiAll[i].classList.toggle('current');有变成无 无变成有
+                    //console.dir( typeof $uuLiAll[i].className)
+                    $uuLiAll[i].className = $uuLiAll[i].className.replace('current', '');
+                   
+                }
+                $uuLiAll[index].className = 'current';
+                move($box, {left: -index * $showBox.clientWidth}, 500);
+               
+            },
+            autoPlay: function(index = 0) {
+               
+            }
+
+        }
+    }())
+    swiper.init();
+</script>

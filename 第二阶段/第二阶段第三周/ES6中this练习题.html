@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>this练习题</title>
+</head>
+<body>
+    <script>
+        // var hair = '海飞丝满屏';//海飞丝还剩一半//
+        // function liHair () {
+        //     hair = '海飞丝还剩一半';
+        //     console.log(this.hair);
+
+        //     var hair = '我买了一瓶新的海飞丝';
+        //     this.hair = hair;
+        // }
+        // function wangHair () {
+        //     hair = '海飞丝还剩一半';
+        //     console.log(this.hair);
+        // }
+        // var obj = {
+        //     "hair": '我只用自己的海飞丝', //我买了一瓶新的海飞丝
+        //     "fn": liHair,
+        //     "gn": wangHair
+        // }
+
+        // liHair(); //海飞丝满屏
+        // wangHair(); //海飞丝还剩一半
+
+        // liHair(); // 海飞丝还剩一半
+
+        // obj.fn(); //我只用自己的海飞丝
+
+        // obj.fn(); //我买了一瓶新的海飞丝
+
+        // obj.gn();//我买了一瓶新的海飞丝
+
+        // hair = '我想换一瓶海飞丝';
+
+        // obj.hair = '我换成霸王了';
+        // var fn = obj.fn;
+        // fn();//我想换一瓶海飞丝
+        
+       // obj.gn();//我换成霸王了
+
+        var arr = {name:'xiao'}
+        function fn(...[a,b,c,d,e]){
+            console.log(a,b,c,d,e);
+            console.log(this.name);
+        }
+       //fn.call(arr,1,5,8, 9) //
+       fn.apply(arr,[1,2,3,4,5])//apply;第一个参数：函数内部this的指向；第二个参数是传入函数的实参集合；
+        // var jie = fn.bind(arr,1,2,3,4,5)
+        // console.log(jie)
+        // jie(8);
+       //第二及多个采纳数
+//是传入函数的实参；返回一个修改后的函数体，不执行；
+    
+    </script>
+</body>
+</html>

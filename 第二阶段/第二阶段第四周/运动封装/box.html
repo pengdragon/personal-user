@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .box {
+            position: absolute;
+            width: 100px;
+            height: 100px;
+            background-color: blue;
+        }
+    </style>
+</head>
+<body>
+    <div class="box"></div>
+    <script src="js/startMove1.0.js"></script>
+    <script>
+        async function fn(params) {
+            var move = new StartMove('.box');
+            await move.animateTo({left: 100, top: 100}, 500);
+            await move.animateTo({left: -100, top: -100}, 500);
+            await move.animateTo({width: 100, top: 100}, 500);
+            return move;
+        }
+        fn().then( _ => {
+            _.animateTo({width: -100, top: -100}, 500)
+        });
+        // move.animateTo({left: 100, top: 100}, 500)
+        // .then(moveObj => {
+        //     return moveObj.animateTo({left: -100, top: -100}, 500);
+        // })
+        // .then(moveObj => {
+        //     moveObj.animateTo({width: 100, top: 100}, 500);
+        // });
+    
+    </script>
+</body>
+</html>

@@ -1,0 +1,128 @@
+DOM对象
+1）DOM文档对象模型，是js操作文档的接口
+2)什么是文档: 一整个html里面的内容全都是文档的一部分；
+
+文档树
+1）在页面加载时，浏览器会根据文档内容生成一个文档树，即
+文档对象document，(文档对象, 把所有的文档内容分层级, 管理并存储)；
+总结：文档对象是js操作文档的接口，在页面加载时，浏览器会根据文档内容生成一个
+文档树，即文档对象，文档对象会把所有文档分层级管理存储；
+浏览器对象是js操作浏览器的接口；
+
+回流和重绘
+1）当修改可以影响布局的样式，就会造成回流；
+2）比如说修改字体颜色，就会造成重绘
+3）结论：回流一定会造成重绘，重绘不一定会造成回流；
+
+节点类型 node 一共有14中，学4种；节点天生自带三种属性
+                     即nodeName(标签名称) nodeType() nodeValue(),
+1）元素节点: 标签名称                          1                     null
+2）文本节点:  #text                               3                       文本内容
+3）注释节点： #comment                     8                      注释内容
+4）根节点：    #document                     9                      null
+  
+获取dom元素几种方式
+1）var $ul = document.getElementById('ul');
+2)  var $ul = document.getElementsByTagName('ul') ;返回一个集合
+以上两个没有兼容问题；
+下面四个问题都有兼容问题；
+3)  var $ul = document.getElementsByClass('ul');返回一个集合
+4)  var $ul = document.getElementsByName('ul');返回一个集合
+5)  var $ul = document.querySelector('ul')；css选择器，默认
+找到第一个返回，以后经常用；
+6）var $ul = document.querySelectorAll('ul')；css选择器,获取全部；
+
+获取节点
+1）获取子节点：var childs = $ul.childNodes;
+2)  获取子元素节点：var childElements = $ul.children;
+以上两个返回的是一个集合，类数组；
+3）获取父节点： var parent = $li.parentNode;
+4）获取兄弟节点:
+找下一个节点：var nextElement = nextElementSibling,var next = nextSibling;
+找上一个节点：var previousElement = previousElementSibling;var previous = previousSibling;
+总结：查找节点 如果没有就返回null;
+
+创建节点
+1）创建元素节点：var $newli = document.createElement('li');
+2）创建文本节点：var $text = document.createTextNode('文本内容')；
+3）创建注释节点：var $comment = document.createComment('我是一个注释')；
+4）创建文档碎片：var $frag = document.createDocumentFragment();(作用: 
+减少回流,和重绘, 并不会形成新的标签, 所以不会影响原有的文本结构);
+
+给节点添加属性
+1）直接在对象.加，不可以添加自定义属性： $newLi.id = 'li';
+                                                                   $newLi.className = 'list';
+2）通过方法添加属性, 可以添加自定义属性   $newLi.setAttribute('class', 'list');
+                                                                   $newLi.setAttribute('index', '1');
+获取属性
+1）对象直接获取：console.log($li.className);console.log($li.index);
+      
+2）通过方法获取：console.log($li.getAttribute('index'));
+        可以获取自定义属性的值
+总结：对象直接添加的自定义属性在html上是没有，但是在堆内存中是有的；
+通过方法可以获取自定义属性，对象直接获取不了在html上的自定义属性；
+
+添加元素(移动元素)：
+1）添加在元素节点$frag里面的最后面：$frag.appendChild($div);
+2）可以添加到任意位置：$frag.insertBefore($div,$ul);
+
+删除元素
+1）删除子元素：$ul.removeChild($li);
+2) 删除自身： $li.parentNode.removeChild($li);
+	      $li.remove()(兼容问题)；
+
+替换元素
+1）$ul.replaceChild($li1, $li);
+克隆节点
+1）参数为true 就是把所有的子元素也克隆；
+ar $newLiClone =  $newLi.cloneNode(true);
+2）false 只克隆本身, 没有子元素；
+ar $newLiClone =  $newLi.cloneNode(false);
+
+总结：换行符也是节点（必须是元素节点之间换行或者元素节点与节点之间换行）；
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

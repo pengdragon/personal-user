@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 只继承了公有属性, 共有属性没有继承
+        // 能找到子类， 不能找到父类
+
+        function People(name, age) {
+            this.name = name;
+            this.age = age;
+            this.friends = ['tom','jack'];
+        }
+        People.prototype.eat = function() {
+            console.log('我是people类的吃吃吃！');
+        }    
+        function Cat(name, age, color) {//可以传值 在继承类中进行People.call(this, name, age);改变了父类中的this
+            // this === cat
+            People.call(this, name, age);
+            this.color = color;
+        }
+        // var cat = new Cat('咪咪', 2, 'red');
+        // var cat2 = new Cat('加肥猫', 4, 'orange');
+        // cat.friends.push('贺书武');
+        // console.log(cat instanceof Cat);
+        // console.log(cat instanceof People);
+
+        console.log(cat2);
+
+
+        // 组合模式
+        // 公有属性公有继承, 
+        // 共有属性共有继承
+        // 把公有属性,也多加了一遍在共有属性中
+        // 但是不耽误使用, 因为对象使用一个属性时, 先从自身查找
+
+        // 缺点： 公有属性在共有属性中多添加了一遍, 所以资源浪费;
+        Cat.prototype = new People();
+        //Cat.prototype.catchMouse = function() {};
+        //Cat.prototype.construcor = Cat;
+        
+        var cat = new Cat('咪咪', 2, 'red');
+        var cat2 = new Cat('加肥猫', 4, 'orange');
+        console.log(cat instanceof Cat);
+        console.log(cat instanceof People);
+        console.log(cat);
+        console.log(cat2);
+
+
+        
+    </script>
+</body>
+</html>

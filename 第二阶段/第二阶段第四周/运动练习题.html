@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script src="getStyle.js"></script>
+    <script>
+                                `var initArr = [10,30,60,79]
+                        var targetArr = [20,100,100,100]
+                                让initArr数组中的每个元素，每10毫秒加1，当
+                        到达targetArr对应的值后，停止；当所有的值都满足了，定时器关闭；
+
+                        `
+            var initArr = [10,30,60,79];
+            var targetArr = [20,100,100,100];  
+            var count=0;   
+           var timer = setInterval(_=>{
+                for(var i = 0;i<4;i++){
+                    initArr[i]++;
+                    if(initArr[i]>targetArr[i]){
+                        initArr[i]= targetArr[i];   
+                    }
+                       
+                  
+
+                }
+                if(initArr[0]== targetArr[0]&&initArr[1]== targetArr[1]&&initArr[2]== targetArr[2]&&initArr[3]== targetArr[3])
+                clearInterval(timer);
+                console.log(initArr)
+            },100)
+
+</script>
+    
+</body>
+</html>
+

@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>漂浮广告</title>
+    <style>
+        .box {
+            position: absolute;
+            border: 1px solid #999;
+            padding: 30px 20px;
+        }
+        
+
+        .box a {
+            position: absolute;
+            right: 4px;
+            top: 4px;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+        }
+        .box2{
+            position: relative;
+            height: 600px;
+            width:600px;
+            background: pink;
+            margin:0 auto;
+           
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box2">
+    <div class="box hover">
+        <a href="javescript:'';" class="close" title="关闭弹窗">还剩余<i>60</i> 秒关闭,或者点击关闭</a>
+        <img src="img/logo.png" alt="">
+    </div>
+</div>
+<script src="js/common.js"></script>
+    <script src="js/ball.js"></script>
+    <script>
+        var $box = document.querySelector('.box');
+        var $a = $box.firstElementChild;
+        var $i = $a.firstElementChild;
+        var $obj =new Ball({$el: $box,$el2:'.box2',speedX:2,speedY:2})
+        $obj.move();
+        setInterval(_=>{
+            $box.style.background = getColor();
+            $a.style.color =window['getColor']();
+        },200)
+        console.log($a)
+        $box.onmouseover =function(){
+            $obj.stop();
+        }
+        $box.onmouseleave = function(){
+            $obj.move();
+        }
+        $a.onclick = function(e){
+            e = e || window.event;
+            e.preventDefault();
+            $box.style.display='none'
+            //$box.parentNode.removeChild();
+        }
+        var timer = setInterval(_=>{
+            var $iVal = $i.innerHTML;
+            $iVal--;
+            if($iVal<=0)
+            $iVal = 60;
+            $i.innerHTML = $iVal;
+        },1000)
+  
+    </script>
+</body>
+
+</html>

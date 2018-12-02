@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+         function People(name, age) {
+            this.name = name;
+            this.age = age;
+            this.friends = ['tom','jack'];
+        }    
+        People.prototype.eat = function() {
+            console.log('我是people类的吃吃吃！');
+        }  
+        
+        function Cat(name, age, color) {
+            // this === cat
+            // 公有属性公有继承
+            People.call(this, name, age);
+            this.color = color;
+        }
+        // 共有属性共有继承
+        // Cat.prototype = People.prototype; (两者互相影响)
+        // 定义一个新的函数, 跟people一模一样的, 只不过把公有属性过滤
+        var fn = function() {}
+        fn.prototype = People.prototype;
+        Cat.prototype = new fn();
+
+        Cat.prototype.constructor = Cat;
+        Cat.prototype.tree = function() {}
+        Cat.prototype.catchMose = function(){
+            console.log('我会抓老鼠')
+        }
+        var cat = new Cat('咪咪', 2, 'red');
+        var people = new People('xxx',12);
+        // console.log(people.catchMose());
+        // cat.eat();
+        console.log(cat);
+        console.log(cat instanceof Cat)
+        console.log(cat instanceof People)
+        console.log(cat instanceof Object);
+        console.log(cat instanceof Function);
+        console.log(Cat instanceof People);
+    </script>
+</body>
+</html>

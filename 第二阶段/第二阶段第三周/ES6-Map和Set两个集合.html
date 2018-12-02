@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //SET结合 数组去重
+        // var arr = [1,2,3,4,5,6,7,8,4,1,2,5,4,4,1,1,2,1,2,1,];
+        // var newSet = new Set(arr);
+        // //此时newSet是一个对象{1, 2, 3, 4, 5,6,7,8}
+        // console.log([...newSet])
+        // newSet.add('77');
+        // console.log(newSet.add([1,2,3,4,5]));//添加一个可以是数组，数字，true false null的值
+        // console.log([...newSet])
+        // console.log(newSet.delete(1,2))
+        // console.log([...newSet])
+        //MAP 集合：本质是二维数组，二维里只能是两个元素；
+        // var arr1 = ['name','彭龙'],arr2 = ['age',7],arr3 = [{'height':'height'},170];
+        // var newMap = new Map([arr1,arr2,arr3]);
+        // console.log(newMap);//{"name" => "彭龙", "age" => 7, {…} => 170}
+        // console.log(newMap.keys())//{"name", "age", {…}}
+        // newMap.set('color','red')
+        // console.log(newMap);//{"name" => "彭龙", "age" => 7, "color" => "red"}{"name" => "彭龙", "age" => 7, {…} => 170, "color" => "red"}
+        // console.log(newMap.keys())//{"name", "age", {…}, "color"}
+        // console.log(newMap.get('name'))//彭龙
+        function fn(x=y,y=2){
+            console.log(x,y);
+        }
+        fn();
+
+ </script>
+</body>
+</html>

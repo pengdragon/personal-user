@@ -1,0 +1,471 @@
+1）设计一个函数， 传入一个数组，返回这个数组中最大的值.html
+arrMax([241,573,26,45,95,68,68,548,672])
+function arrMax(arr){
+	for(var i=0;i<arr.length-1;i++){
+		for(var j=i;j<arr.length-1-i;j++){
+			if(arr[j]>arr[j+1])
+			arr[j+1] = arr[j]+(arr[j]=arr[j+1])*0;
+		}
+	}
+	console.log(arr[arr.length-1]);
+}
+
+2）一个页面有10个li, 给10个li添加随机背景颜色.html
+//一个页面有10个li, 给10个li添加随机背景颜色
+var liAll = document.getElementsByTagName('li');
+function backgroundColor(){
+	for(var i =0;i<liAll.length;i++){
+	var licolor =  color();
+	liAll[i].style.background = licolor;
+	console.log(licolor);
+	}			
+}
+backgroundColor();
+var time = setInterval(backgroundColor,500);
+//clearInterval(time);
+function color(){
+	var str = '#';
+	var arr = [];
+	var arr1 = [0,1,2,3,4,5,6,7,8,9];
+	var arr2 = [];
+	for(var i=97;i<103;i++){
+	arr[i-97] = String.fromCharCode(i);//输出a-f 
+	}
+	arr2 = arr.concat(arr1);
+	for(var j=0;j<6;j++){
+	var a = Math.floor(Math.random()*arr2.length);
+	str+=arr2[a];			
+	}
+	return str; 
+}		
+
+3）传入一个数组，将其打乱后输出.html
+function breakRank(arr){
+	var newArr = [];
+	var _index = arr.length;
+	for(var i = 0;i<_index;i++){
+		var index = Math.floor(Math.random()*arr.length); 
+		newArr[i]=arr[index];
+		arr.splice(index,1);
+	}
+	return newArr;
+}
+var a = breakRank([11,44,27,65,3,6,9,7,0,8]);
+console.log(a);
+
+4）冒泡排序法.html
+var arr1 = [1,56,78,4,32,15,65,49,25]
+function fn(arr){
+	for(var i = 0;i<arr.length-1;i++){
+		for(var j =0;j<arr.length-i-1;j++){
+			if(arr[j]>arr[j+1])
+			arr[j] = arr[j+1]+(arr[j+1]=arr[j])*0;
+		}
+	}
+//				return arr1;
+}
+fn(arr1);
+console.log(arr1);
+
+5）判断一个数是否存在于数组当中.html
+//定义一个函数 定义两个形参 一个是值 一个是数组 判断这个值是否存在于数组中
+//如果存在 返回true 不存在 返回false
+
+function indexOf(item,arr){
+	for(var i =0;i<arr.length;i++){
+		if(item===arr[i])
+		return i;//如果相等 返回索引
+		//return true;
+	}
+	return -1;//如果相等 返回1
+	//return false;
+}
+var a = indexOf(5,[1,2,3,4,5,6,7]);
+console.log(a);
+
+6）对象和数组相同点异同点.html
+//第一点 初始化 对象需要写属性名称 数组不用写 默认有序即索引或者属性名称；
+var obj = {
+	'name':'xiaopeng',
+	'age':23,
+	'height':'170cm'
+}
+var arr = [
+'xiaopeng',23,'170cm']
+console.log(arr);
+//第二点 修改属性值
+obj.age = 25;
+obj['height'] = '175cm';
+console.log(obj);
+
+arr['1'] = 25;
+arr['2'] = '175cm';
+console.log(arr)
+
+//第三点 增加属性以及属性值
+obj.six = 'men';
+obj['hobby'] = '吃';
+console.log(obj);
+
+arr['six'] = 'men';
+arr['hobby'] = '吃';
+console.log(arr);
+
+var obj1 = {
+	'name':'xiongbin',
+	'age':23,
+	'six':'men',
+	'friend':{
+		'name':"xiaopeng",
+		'age':25,
+		'six':'men'
+	}
+}
+console.log(obj1.friend.name);
+
+7）斐波那契数组.html
+function feiBo(num){
+	if(num==1)
+	return [1];
+	if(num==2)
+	return [1,1];
+	var arr=[1,1];
+	for(var i=2;i<num;i++){
+		arr[i] = arr[i-1]+arr[i-2];
+		//arr.push(arr[i-1]+arr[i-2]);
+	}
+	return arr;
+}
+var arrfeibo = feiBo(20);
+console.log(arrfeibo);
+
+8）根据数组对象中年龄身高体重来排序.html
+var arr =[
+{name:'xiaopenng',
+age:14,
+height:'170cm'
+},
+{name:'liming',
+age:18,
+height:'160cm'
+},
+{name:'xiaogang',
+age:11,
+height:'180cm'
+},
+{name:'zhangsan',
+age:21,
+height:'182cm'
+}];
+
+arr.sort(function(a,b){
+	return parseInt(a.height)-parseInt(b.height);
+});
+console.log(arr);
+
+9）淘宝面试题域名解析.html
+var str = 'http://www.1000phone.com?name=xixi&age=18&color=red&eat=fish';
+//{name:'xixi',age:18,color:'red',eat:'fish'}
+var arr = str.split('?');//http://www.1000phone.com，name=xixi&age=18&color=red&eat=fish
+var arr1=[];
+var obj={};
+arr = arr.slice(1).join('').split('&');//截取name=xixi&age=18&color=red&eat=fish并分割成数组
+for(var i=0;i<arr.length;i++){
+	arr1 = arr[i].split('=');
+	for(var j=0;j<1;j++){
+		obj[arr1[j]]=arr1[j+1]
+	}		
+}
+console.log(obj);
+
+10）生成一个100个元素数组，每个元素随机，值在10-50之间.html
+//生成一个数组, 默认有100个元素, 每个元素的值随机, 随机的范围在10-50之间,
+// 求数组中没五项的平均值, 以数组输出
+// 举个栗子
+// 假设生成的随机数组是[20,30,40,50,60,20,30,40,50,60]
+// 返回的结果是[40, 40];
+var arr = new Array();
+var arr1  = [];
+var num = 0;
+for(var i=1;i<=100;i++){
+	var a = Math.floor(Math.random()*40+10);
+	arr.push(a);
+	num = num+a;
+	if(i%5==0){
+		arr1.push(num/5);
+		num = 0;
+	}				
+}
+console.log(arr1);
+
+11）类似QQ账号验证.html
+function $(num){
+	return document.getElementById(num);
+}
+var _inp = $('inp');
+var _btn = $('btn');			
+_btn.onclick = function(){
+	console.log('进来了')
+	if(!_inp.value)
+	alert('输入不能为空');
+	else if(10<_inp.value.length||_inp.value.length<5){
+	alert('输入的数字必须在5位以上、10位以内');
+	}
+	else if(_inp.value.charAt(0)==0){
+		alert('第一个数不能为零');  
+	}
+	else if(isNaN(_inp.value)||_inp.value.indexOf('.')>-1){
+		alert('只能时是纯数字');
+	}      	
+	else{
+		alert("正在登陆!请稍后");	
+	}
+	}
+
+12)计时器分秒计时.js
+var clock = (function(){
+function $(obj){
+return document.getElementById(obj);
+}
+var num = 0;
+var time;
+var _inp = $('inp');
+var _start = $('start');
+var _stop = $('stop');
+var _clean = $('clean');
+var _fen = $('fen');
+var _miao = $('miao');
+_start.value ='开始';
+_stop.value = "暂停";
+_clean.value = '清零';		
+console.log(1)
+return {
+Init:function(){
+this.Event();
+},
+Event:function(){
+var _this = this;
+_start.onclick = function(){					
+_this.SetIntval();//调用定时器	
+}
+//暂停
+_stop.onclick = function(){
+clearInterval(time); 
+
+}//清零 
+_clean.onclick = function(){
+num=0;
+_fen.innerHTML=00+'分';
+_miao.innerHTML=00+'秒';
+}
+},
+ShowTime:function(){ 
+num++;
+if(_miao<10)					 
+_miao.innerHTML='0'+Math.floor(num)%60+'秒';
+else
+_miao.innerHTML=Math.floor(num)%60+'秒';
+if(_fen<0)
+_fen.innerHTML ='0'+ Math.floor(num/60%60)+'分';			
+else
+_fen.innerHTML =Math.floor(num/60%60)+'分';	
+},
+SetIntval:function(){			
+time = setInterval(this.ShowTime,1000);
+}
+
+}
+
+}()) 
+
+13)计算两个日期相差多少.html
+var date1 = prompt('请输入日期1');
+var date2 = prompt('非常好，请输入日期2');
+function dateDistence(arr1,arr2){
+	var date1 = new Date(arr1);
+	var date2 = new Date(arr2);
+	var miliSecond = date1.getTime() - date2.getTime();
+	miliSecond = Math.floor(Math.abs(miliSecond) / 1000);
+		// 获取秒
+	var s = miliSecond % 60;
+	// 获取分钟
+	var f = Math.floor(miliSecond / 60) % 60;
+
+	var h = Math.floor(miliSecond / 60 / 60) %  24;
+
+	var day = Math.floor(miliSecond / 60 / 60 / 24);
+
+	// console.log('相差' + day + '天')
+	return (`相差${day}天， ${h}小时，${f}分钟, ${s}秒`);
+}
+
+var yeah = dateDistence(date1,date2);
+alert(yeah);
+
+14)设置一个函数，输入一个日期字符串，返回这个日期是星期几.html
+//设置一个函数，输入一个日期字符串，返回这个日期是星期几
+function getDay(str){
+	var arr = ['星期日','星期一','星期二','星期三','星期四','星期五','星期六'];
+	var date = new Date(str);
+	var _date = date.getDay();
+	return arr[_date]
+}
+var day = getDay('2018/11/2');
+console.log(day);
+
+15)设计一个函数, 传入一个数组, 返回数组中每个元素出现的次数.html
+function countNumber(arr){
+	var obj = {};
+	for(var i = 0;i<arr.length;i++){
+		if([arr[i]] in obj)
+		obj[arr[i]]++;
+		else
+		obj[arr[i]]=1;
+	}
+	return obj;
+}
+var a = countNumber([1,2,1,3,1,2,3,5,6,4,7,8,9,5,2,5,4,4,4]);
+console.log(a);
+
+16)设计一个函数，传入一个数组，返回数组中第二大的数.html
+function numTow(arr){
+	//如果考虑去重,写去重函数 由于函数提升 直接写在当前作用域第一行
+	function deWeight(){
+		var newArr = [];
+		for(var i = 0;i<arr.length;i++){
+			if(newArr.indexOf(arr[i]==-1))
+			newArr[i]=arr[i];
+		}
+	}
+	deWeight(arr);
+	//数组排序
+	var newArr = arr.sort(function(a,b){
+		return a-b;
+	});
+	//如果不考虑去重 就用如下方法进行比较；
+	/*for(var i = newArr.length-1;i>=0;i--){
+		if(newArr[i]!=newArr[i-1])
+		return newArr[i-1];	
+	}		*/
+	return newArr[newArr.length-2];//返回数组的第二大的数
+}
+var a = numTow([1,4,6,7,8,12,74,74,444,772]); 
+console.log(a);
+
+17)设计一个函数生成一个随机颜色， 并返回。如： '#187aaf', '#ffaa11'.html
+function color(){
+	var str = '#';
+	var arr = [];
+	var arr1 = [0,1,2,3,4,5,6,7,8,9];
+	var arr2 = [];
+	for(var i=97;i<103;i++){
+	arr[i-97] = String.fromCharCode(i);//输出a-f 
+	}
+	arr2 = arr.concat(arr1);
+	for(var j=0;j<6;j++){
+	var a = Math.floor(Math.random()*arr2.length);
+	str+=arr2[a];			
+	}
+	return str;
+}
+var b = color();
+console.log(b);
+
+18)选择排序法.html
+//小的放左边
+var arr1 = [1,5,3,4];
+function fn(arr){
+	/*传入引用数据类型数据时 会改变原有数据 怎么不改变原有引用数据*/
+	arr = arr1.slice(0);
+	for(var i=0;i<arr.length;i++){
+		for(var j = i+1;j<arr.length;j++){
+		if(arr[i]>arr[j])
+		arr[i] = arr[j]+(arr[j]=arr[i])*0;
+	}
+	}
+	return arr;
+	
+}
+var newArr = fn(arr1);
+console.log(newArr);
+console.log(arr1);
+
+19)高阶函数.html
+//map()方法；此方法省了一个for循环；
+//			var arr = [1,2,3,4,5,6,7,8,9];
+//			arr = arr.map(function(a){
+//				return Math.pow(a,2);
+//			});
+//			console.log(arr);
+
+//数组中小于20的数重新用新数组装起来；使用for循环和filter（）方法；
+/*var arr = [10,15,20,30,17];
+var arr1 = [];
+var arr2 = [];
+for(var i=0;i<arr.length;i++){
+	if(arr[i]<20)
+	arr1.push(arr[i]);
+}
+console.log(arr1);  
+arr2 = arr.filter(function(item,index,arr){
+	return item<20;//如果为true 则把元素返回；
+});
+console.log(arr2);*/
+
+
+//reduce()方法；
+//数组里所有元素相加
+/*var arr = [10,15,20,30,17];
+var newArr = arr.reduce(function(a,b){
+	return a+b;
+})
+console.log(newArr);*/ 
+
+var arr1 = [1,2,3,4];
+var newArr = arr1.reduce(function(a,b){
+	
+	console.log(a);
+	console.log(b);
+		
+})
+console.log(newArr);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

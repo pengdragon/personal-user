@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>抛物线</title>
+    <style>
+        .shop {
+            position: absolute;
+            width: 50px;
+            height: 50px;
+            top: 300px;
+            left: 0;
+            background: red;
+            display: none;
+        }
+
+        .car {
+            position: fixed;
+            top: 300px;
+            right: 0;
+            width: 50px;
+            height: 50px;
+            background: blue;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="shop"></div>
+    <div class="car"></div>
+    <script>
+        var $car = document.querySelector('.car');
+        var $box = document.querySelector('.shop');
+        var timer = null;
+        window.onclick = function (ev) {
+            clearInterval(timer)
+            ev = ev || window.event;
+            $box.style.display = 'block';
+            $box.style.left = ev.pageX + 'px';
+            $box.style.top = ev.pageY + 'px';
+            // 获取起始位置
+            var nStartX = ev.pageX,
+            nStartY = ev.pageY;
+            // 获取终点位置
+            var nEndX = $car.offsetLeft,
+            nEndY = $car.offsetTop,
+            nTopX = nEndX - 8;
+            nTopY  = nEndY - 8;
+            
+            // y = a * x * x + bx + c
+            var a = ((nStartY - nEndY) * (nStartX - nTopX) - (nStartY - nTopY) * (nStartX - nEndX)) / ((nStartX * nStartX - nEndX * nEndX) * (nStartX - nTopX) - (nStartX * nStartX - nTopX * nTopX) * (nStartX - nEndX));
+            var b = ((nEndY - nStartY) - a * (nEndX * nEndX - nStartX * nStartX)) / (nEndX - nStartX);
+            var c = nStartY - a * nStartX * nStartX - b * nStartX;
+            var x = nStartX;
+            timer = setInterval(function() {
+                x+= 2;
+                var y =  a * x * x + b * x + c;
+                if (x >= nEndX) {
+                    x = nEndX;
+                    y = nEndY;
+                    clearInterval(timer);
+                }
+                $box.style.left = x + 'px';
+                $box.style.top = y + 'px';
+            }, 10) 
+        }
+    </script>
+</body>
+
+</html>

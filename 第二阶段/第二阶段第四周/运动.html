@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>运动</title>
+    <style>
+    .box{
+        position: absolute;
+        left:0px;
+        top:0px;
+        width:200px;
+        height: 200px;
+        background: blue;
+        opacity: 1;
+      
+    }
+    </style>
+</head>
+<body>
+    <div class="box"></div>
+    <script src="getStyle.js"></script>
+    <script src="move.1.0.0.js"></script>
+    <script>
+        var $box = document.querySelector('.box');
+        $box.onmouseover = e=>{
+             move( $box,{
+            width:'500',
+            height:'500',
+            opacity:'50'
+        },1000);
+        }
+        $box.onmouseout = e=>{
+            move( $box,{
+            width:'200',
+            height:'200',
+            opacity:'100'
+        },100);
+        }
+        
+        </script>
+</body>
+</html>

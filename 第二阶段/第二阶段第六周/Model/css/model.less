@@ -1,0 +1,80 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+.model-dialog {
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  background-color: fade(#000,40%);
+  .model-content {
+    padding: 20px;
+    width: 400px;
+    background-color: #fff;
+    // border: 1px solid #000;
+    box-shadow: 0 3px 9px fade(#000, 50%); 
+    .model-header {
+      // height: 40px;
+      // line-height: 40px;
+      text-align: center;
+      .close {
+        color: #000;
+        float: right;
+      }
+    }
+    .model-body {
+      display: flex;
+      align-items: center;
+      min-height: 100px;
+      i {
+        font-weight: 600;
+        font-size: 30px;
+        margin-right: 10px;
+        &.qf-shop-error {
+          color: #f56c6c;
+        }
+        &.qf-shop-info {
+          color: #409eff;
+        }
+        &.qf-shop-warning {
+          color: #e6a23c;
+        }
+        &.qf-shop-success {
+          color: #67c23a;
+        }
+      }
+      p {
+        flex-grow: 1;
+      }
+    }
+    .model-footer {
+      text-align: right;
+    }
+  }
+}
+.btn {
+  display: inline-block;
+  padding: 6px 12px;
+  margin-bottom: 0;
+  font-size: 14px;
+  font-weight: 400;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: middle;
+  cursor: pointer;
+  border: 1px solid transparent;
+  border-radius: 4px;
+  color: #fff;
+  background-color: #999;
+  &:focus {
+    outline: none;
+  }
+  &-danger {
+     background-color: lighten(red, 20%);
+  }
+}

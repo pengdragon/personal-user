@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			var arr1 = [1,56,78,4,32,15,65,49,25]
+			function fn(arr){
+				for(var i = 0;i<arr.length-1;i++){
+					for(var j =0;j<arr.length-i-1;j++){
+						if(arr[j]>arr[j+1])
+						arr[j] = arr[j+1]+(arr[j+1]=arr[j])*0;
+					}
+				}
+//				return arr1;
+			}
+			fn(arr1);
+			console.log(arr1);
+		</script>
+	</body>
+</html>

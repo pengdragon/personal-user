@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        html,body,ol,li,div,img{margin:0;padding:0}
+        li{list-style: none;}
+    .box{height: 400px;
+    width:400px;
+    border:1px solid #ccc;
+    margin-left:150px;
+    background:white;
+    position: relative;
+    /* margin-top:100px; */
+    position:relative;
+    top:100px;
+    margin-bottom: 110px;
+    }
+    .box li{
+        position: absolute;
+        left:0;
+        top:0;
+
+    }
+    .mini-box{
+        height:250px;
+        width:250px;
+        background:palegoldenrod;
+        position: absolute;
+        display: none;
+        position:absolute;
+        opacity: 0.5;
+        z-index: 10;
+        cursor: move;
+    }
+    .box img{display: block;
+    width:400px;
+    height: 400px;
+    }
+    .box .current{
+        z-index:6;
+    }
+   #btn li img{
+       width:100px;
+       height: 100px;
+   }
+   #btn{
+       margin-left:110px;
+   }
+   #btn li{
+       display: inline-block;     
+   }
+   .picture img{
+       height: 800px;
+        width:800px;
+       
+        }
+    .picture li{
+        position: absolute;
+        height: 800px;
+        width:800px;
+    }
+   .play{
+        z-index: 5;
+    }
+   .picture{
+       position: relative;
+       left:570px;
+       top:-530px;
+       background: blueviolet;
+       height: 500px;
+       width:500px;
+       font-size: 200px;
+       line-height: 500px;
+       display: none;
+       overflow: hidden;
+      
+   }
+    </style>
+</head>
+<body>
+    <ol class="box">
+        <li  style="z-index:1"> <img src="img/0.jpg" alt=""> </li>
+        <li><img src="img/1.jpg" alt=""></li>
+        <li><img src="img/2.jpg" alt=""></li>
+        <li class="mini-box"></li>
+    </ol>
+    <ul id='btn'>
+        <li><img src="img/0.jpg" alt=""></li>
+        <li><img src="img/1.jpg" alt=""></li>
+        <li><img src="img/2.jpg" alt=""></li>
+    </ul>
+    <div class='picture'>
+        <li style="z-index:1"><img src="img/0.jpg" alt=""></li>
+        <li><img src="img/1.jpg" alt=""></li>
+        <li><img src="img/2.jpg" alt=""></li>
+      
+      
+        
+    </div>
+    <script src="playBig.js"></script>
+  
+    <script>
+      obj.init('.box');     
+    </script>
+</body>
+</html>

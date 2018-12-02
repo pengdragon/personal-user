@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <input type="text" id="inp">
+    <button id="btn">传值</button>
+    <script>
+        btn.onclick = function() {
+            // 通过url传值
+            // location.href = 'b.html#' + inp.value;
+
+
+            // 设置值
+            localStorage.val = inp.value;
+            localStorage.setItem('name', '我是一个名字');
+            sessionStorage.setItem('lol', '李青');
+            location.href = 'b.html';
+
+        }
+
+
+        会话: 
+        // 同源策略
+        //本地存储
+            // localStorage
+            // 范围: 只要是同源, 无论多少个会话都可以使用
+            // 没有过期时间
+            // 存储大小（不限制）
+            
+
+        // 会话存储
+            sessionStorage
+            // 范围: 只能在当前会话使用, 新开的tab页.即使在同源, 也不可以使用
+            // 当前会话结束, 就过期了
+            // 存储大小没有限制
+        
+        // 存值只能是字符串
+
+    
+    </script>
+</body>
+</html>

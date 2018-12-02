@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <input type="text" id="key">
+    <input type="text" id="value">
+    <button id="btn">添加</button>
+    <button id="btn2">显示</button>
+    <script src="cookie.js"></script>
+    <script>
+        btn.onclick = function() {
+            var _key = key.value;
+            var _value = value.value;
+            cookie.setItem(_key, _value, 1);
+        }
+        btn2.onclick = function() {
+            console.log(document.cookie);
+            var val = cookie.getItem(key.value);
+            console.log(val);
+        }
+        
+        
+        
+    </script>
+</body>
+</html>

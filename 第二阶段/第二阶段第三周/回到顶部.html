@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>回到顶部</title>
+    <style>
+        .box {
+            height: 3000px;
+        }
+        .up {
+            position: fixed;
+            right: 50px;
+            bottom: 50px;
+            width: 100px;
+            line-height: 40px;
+            background-color: #000;
+            color: #fff;
+            text-align: center;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <h1>我是顶部</h1>
+    <div class="box">
+
+    </div>
+    <div class="up">
+        回到顶部
+    </div>
+    <script>
+        var obj = (function(){
+            var $up = document.querySelector('.up');
+             return{
+                Init:function(){
+                    this.Event();
+                },
+                Event:function(){
+                    document.onscroll = function(e){
+                        e = e ||window.event;
+                        var top = document.documentElement.scrollTop||document.body.scrollTop;
+                        console.log(document.documentElement.scrollTop+'------'+document.body.scrollTop)
+                        if(top>100)
+                        $up.style.display = 'block';        
+                        };
+                    $up.onclick = function(){
+                        var time = setInterval(function(){
+                        var _top =document.documentElement.scrollTop;
+                        _top-=10;
+                        if(_top<100)
+                        $up.style.display = 'none';
+                        if(_top<=0){
+                        document.documentElement.scrollTop=0;
+                        clearInterval(time);
+                        }
+                        document.documentElement.scrollTop=_top;
+                    },10)
+                     }
+                }
+             }   
+        }())
+        obj.Init();
+        
+        
+    </script>
+</body>
+</html>

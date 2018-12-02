@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">	
+			var obj = (function(str){
+				var a = str.indexOf('?');
+				str = str.slice(a+1);
+				str = str.split('&');
+				return{
+					Init:function(){
+						var arr = [];
+						for(var i = 0,length = str.length;i<length;i++){
+						arr = str[i].split('=');
+						this[arr[0]] = arr[1];
+						}
+						console.log(this);
+					}
+				}	
+			}('http://www.1000phone.com?name=xixi&age=18&color=red&eat=fish'))
+			obj.Init();
+			//{name:'xixi',age:18,color:'red',eat:'fish'}
+			/*var arr = str.split('?');//http://www.1000phone.com，name=xixi&age=18&color=red&eat=fish
+			var arr1=[];
+			var obj={};
+			arr = arr.slice(1).join('').split('&');//截取name=xixi&age=18&color=red&eat=fish并分割成数组
+			for(var i=0;i<arr.length;i++){
+				arr1 = arr[i].split('=');
+				for(var j=0;j<1;j++){
+					obj[arr1[j]]=arr1[j+1]
+				}		
+			}
+			console.log(obj);*/
+			
+			
+		</script>
+	</body>
+</html>

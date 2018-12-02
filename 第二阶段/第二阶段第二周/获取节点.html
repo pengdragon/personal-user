@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <ul  class='ul'>
+    小彭真帅
+    <!-- 真棒 -->
+    <li></li>
+    <li></li>
+    <li></li>
+    </ul>
+    <script>
+        
+        var arr = [];
+        var $ul = document.querySelector('.ul');
+        var $childAll = $ul.childNodes;
+        console.log($childAll);
+        console.log($childAll[1].nodeValue);
+        var $span = document.createElement('span');
+        console.log($span);
+        $ul.appendChild($span);
+        console.log($ul);
+        var $EchildAll = $ul.children;
+        $ul.insertBefore($span,$EchildAll[0]);
+    /*var $ul = document.querySelector('.ul');
+    var $nodes = $ul.childNodes;
+    var arr = [];
+    for(var i = 0;i<$nodes.length;i++){
+        if($nodes[i].nodeType==1)
+         arr.push($nodes[i]);
+    }
+    console.log(arr);*/
+    /*var $div = document.createElement('div');
+    var $text = document.createTextNode('我是小彭，我在写文本');
+    var $comment = document.createComment('我是注释');
+    var $frag = document.createDocumentFragment();
+    var arr = [$div,$text,$comment,document]
+    for(var i = 0;i<4;i++){
+        console.log(arr[i].nodeName);
+        console.log(arr[i].nodeType);
+        console.log(arr[i].nodeValue);
+    }*/
+    
+</script>
+</body>
+</html>

@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div id="first">
+        <p>0</p>
+        <button class="add">+1</button>
+        <button class="clear">清除</button>
+    </div>
+    <div id="second">
+        <p>0</p>
+        <button class="add">+1</button>
+        <button class="clear">清除</button>
+    </div>
+    <div id="thond">
+        <p>0</p>
+        <button class="add">+1</button>
+        <button class="clear">清除</button>
+    </div>
+    <script>
+    // function Tiaoshen(obj){
+    //         this.$ele1 = obj.ele1;
+    //         this.$p= obj.ele1.children[0];
+    //         this.$jia1 = obj.ele1.children[1];
+    //         this.$clean = obj.ele1.children[2];
+    //         Tiaoshen.prototype.tiao = _=>{
+    //         this.$jia1.onclick = _=>{
+    //           var val = this.$p.innerHTML;
+    //           val++;
+    //           this.$p.innerHTML = val;
+    //         }
+    //         this.$clean.onclick = _=>{
+    //             this.$p.innerHTML="0";
+    //         }
+    //        }
+    // }
+    //         var tiaoshen =new Tiaoshen({ele1:first});
+    //         tiaoshen.__proto__.tiao();
+    //         var tiaoshen2 =new Tiaoshen({ele1:second});
+    //         tiaoshen2.__proto__.tiao();
+    //         var tiaoshen3 =new Tiaoshen({ele1:thond});
+    //         tiaoshen3.__proto__.tiao();
+
+var count = (function() {
+            // 获取所有添加按钮
+            var $addBtnAll = document.querySelectorAll('.add');
+            // 获取所有清除按钮
+            var $clearBtnAll =  document.querySelectorAll('.clear')
+            return {
+                init() {
+                    this.event();
+                },
+                event() {
+                    const _this = this;
+                    for(var i = 0; i < $addBtnAll.length; i++) {
+                            (function() {
+                                var  count = 0
+                                $addBtnAll[i].onclick = function() {
+                                    count++;
+                                    _this.set(this.parentNode, count, 'p');
+                                }
+                                $clearBtnAll[i].onclick = function() {
+                                    count = 0;
+                                    _this.set(this.parentNode, count, 'p')
+                                }
+
+                            }())
+                        
+                    }
+                },
+                set(ele, val, child) {
+                    // 如果传入了子类名
+                    if(child) {
+                        ele.querySelector(child).innerHTML = val;
+                    } else {
+                        ele.innerHTML = val;
+                    }
+                }
+            }
+        }())
+        count.init()
+
+     </script>
+</body>
+</html>

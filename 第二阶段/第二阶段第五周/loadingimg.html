@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>预加载</title>
+    <style>
+        *{padding:0;margin:0}
+    #tg{
+        height: 100vh;
+        width:100vw;
+        background: black;
+       color:aliceblue;
+       display: flex;
+       justify-content: center;
+       align-items: center;
+       position: absolute;
+    }
+    </style>
+</head>
+<body>
+    <div id='tg'>
+       loading......
+    </div>
+    <img src="//m.360buyimg.com/babel/jfs/t29329/81/577156197/62588/fd4f366b/5bf782c1N1f1ceb04.jpg" alt="">
+    <img src="//img1.360buyimg.com/pop/jfs/t25993/243/1676457597/78956/825fc1c9/5bb8e403Nf700bf9c.jpg" alt="">
+    <img src="//img1.360buyimg.com/pop/jfs/t28300/30/297991132/71632/52bda2f4/5beec90cN8bdad464.jpg" alt="">
+    <img src="//m.360buyimg.com/babel/jfs/t27898/177/2116722740/97958/2bc3e127/5bf7b325N8e454215.jpg" alt="">
+    <script src="JS/until.js"></script>
+    <script>
+      // const imgSrc = [
+        //     '//m.360buyimg.com/babel/jfs/t27898/177/2116722740/97958/2bc3e127/5bf7b325N8e454215.jpg',
+        //     '//img.360buyimg.com/pop/jfs/t1/5475/13/1124/82483/5b932a4dE869998fd/aedca08458a33b41.jpg',
+        //     '//m.360buyimg.com/babel/jfs/t28927/295/371468481/96735/bf8d5719/5bf14d8aNf66930be.jpg',
+        //     '//m.360buyimg.com/babel/jfs/t27721/249/2118236449/91404/20e61d48/5bf7a2a2N2e45fbd0.jpg'    
+        // ]
+        //var $imgAll = document.querySelectorAll('img');
+        // var count = 0;
+        // for(let i = 0; i < $imgAll.length; i++) {
+            // loadImg($imgAll[i]).then(data => {
+            //     count++;
+            //     console.log(count);
+            //     if(count == $imgAll.length) {
+            //         document.querySelector('.bg').style.display = 'none';
+            //     }
+            // })
+        // }
+        var $imgAll = document.querySelectorAll('img');
+        console.log($imgAll);
+        const arr=[];
+    for(let i =0;i<$imgAll.length;i++){
+        arr[i]=loadImg($imgAll[i]);
+      //loadImg($imgAll[i]).then(res=>{console.log(i)});
+
+    }
+    //console.log(arr)
+    Promise.all(arr).then(res => {
+        document.querySelector('#tg').style.display = 'none';
+        console.log(res);
+    }).catch(res=>{console.log(res)})
+    </script>
+      
+</body>
+</html>

@@ -1,0 +1,79 @@
+私有属性：外部无法使用；在自执行函数里定义
+公有属性：外部可以使用；加到对象上，外部可以使用
+
+补充ES6部分知识：
+Set集合
+1）已学集合：数组，类数组，对象
+2）Set集合，不允许出现相同的元素，只接受一个参数且是数组类型的；
+3）数组去重:
+arr=[1,2,3,5,5,4,4,],var newSet = new set(arr);arr = [...newSer]
+4）只要是类数组的，都可以通过去壳使之变成数组
+Set方法
+1）newSet.has();只有一个参数，判断参数是否存在，不存在返回false;
+存在返回true;
+
+2）newSet.add();只有一个参数，添加后返回Set集合；添加的参数一个可以是数组，
+string number boolean null类型的参数;如果写两个参数，
+也只会添加第一个，后面写再多也没用
+
+3）newSet.delete();只有一个参数，如果集合里存在这个参数，则删除之且返回true,
+如若集合里不存在这个参数，则返回false，且对集合毫无影响；
+
+
+Map集合：本质是二维数组
+1）var newMap = new Map([['name','xixi'],['age',18]]);二维里只能是两个参
+数且一般第一个参数为属性，第二个参数为属性值；
+2）对象的属性名称只能是字符串，而Map集合的属性名称可以是任意数据类型；
+3）如果在对象里想让属性名称为对象时，就用Map；
+ var arr1 = ['name','彭龙'],arr2 = ['age',7],arr3 = [{'height':'height'},170];
+        var newMap = new Map([arr1,arr2,arr3]);
+        console.log(newMap);//{"name" => "彭龙", "age" => 7, {…} => 170}
+        console.log(newMap.keys())//{"name", "age", {…}}
+        newMap.set('color','red')
+        console.log(newMap);//{"name" => "彭龙", "age" => 7, "color" => "red"}{"name" => "彭龙", "age" => 7, {…} => 170, "color" => "red"}
+        console.log(newMap.keys())//{"name", "age", {…}, "color"}
+        console.log(newMap.get('name'))//彭龙
+Map方法
+1）newMap.set('color','red');设置 
+2)   newMap.get('color');获取
+3）newMap.keys();属性名称
+
+
+补充：1)循环对象中，所有的都是可枚举属性
+           2)循环数组中，索引属性才是可枚举属性，其
+            他的则是不可枚举属性(比如用for in 来循环数组，
+             只能循环出来索引属性以属性值，而非索引属性则
+             循环不出来)
+
+for of用来循环数组的方法，string也可以循环，只要是跟数组结构一样的都能循环
+1）for循环跟数组索引类似，所以用来循环数组，
+2）真正循环数组方法：for(var item arr){}循环 item代表的是元素
+
+Class 类
+1)面向对象：一个高级的编程思维
+2）特点：封装，继承，多态(在js中没有)即多种形态；
+
+3）多态分为重载和重写；相同函数具有多种形态即多态；
+记忆小技巧：java人类 创建两个具体的人，用了同样的方法即贼能吃，
+因此，同一个方法，却是为两人所用这样就可以理解成多态；
+
+4）继承请看代码；
+
+补充：
+delete也是可以删除数组元素，和数组删除方法有什么区别呢
+1）arr=[1,2,3],delete arr[0] ，删除后arr里面的值是这样的[empty,2,3];
+因为其是有序的集合，所以delete删除数组元素不会改变数组长度；
+2）obj={name:'penglong',age:18},delete.obj.name,删除后obj的值是
+这样的，{age:18};因其是无序集合，所以delete删除对象属性时,就拜拜咯；
+
+
+
+
+
+
+
+
+
+
+
+

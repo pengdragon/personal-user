@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/banner.css">
+</head>
+
+<body>
+    <div class="qf-banner">
+        <!-- 多加一个slide样式, 因为淡入淡出的样式和滑动的样式不一样 -->
+        <div class="banner-inner slide">
+            <div>
+                <img src="images/1.jpg" alt="">
+            </div>
+            <div>
+                <img src="images/2.jpg" alt="">
+            </div>
+            <div>
+                <img src="images/3.jpg" alt="">
+            </div>
+            <div>
+                <img src="images/4.jpg" alt="">
+            </div>
+            <div>
+                <img src="images/5.jpg" alt="">
+            </div>
+            <div>
+                <img src="images/6.jpg" alt="">
+            </div>
+        </div>
+        <ul class="banner-tip">
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+        </ul>
+        <a href="javascript:;" class="left-btn"></a>
+        <a href="javascript:;" class="right-btn"></a>
+    </div>
+    <script src="js/move1.1.0.js"></script>
+    <script src="js/swiper2.0.js"></script>
+    <script src="js/changeImg.js"></script>
+    <script>
+       var swiper = new ChangeImage({
+           el: '.qf-banner',
+           autoPlay: true
+       });
+       swiper.init();
+    </script>
+</body>
+
+</html>

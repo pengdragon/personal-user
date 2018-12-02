@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			function breakRank(arr){
+				var newArr = [];
+				var _index = arr.length;
+				for(var i = 0;i<_index;i++){
+					var index = Math.floor(Math.random()*arr.length); 
+					newArr[i]=arr[index];
+					arr.splice(index,1);
+				}
+				return newArr;
+			}
+			var a = breakRank([11,44,27,65,3,6,9,7,0,8]);
+			console.log(a);
+		</script>
+	</body>
+</html>

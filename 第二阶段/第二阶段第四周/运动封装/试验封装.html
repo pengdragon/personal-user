@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+<style>
+      .box {
+            position: absolute;
+            width: 100px;
+            height: 100px;
+            background-color: blue;
+        }
+</style>
+</head>
+<body>
+    <div class="box"></div>
+    <script src="js/startMove.js"></script>
+    <script>
+    var newMove = new  StartMove('.box');
+    console.log(newMove)
+    newMove.animateTo({left:100,top:100},300,_this=>{
+        _this.animateTo({left:-100,top:-100},300,ele=>{
+            ele.animateTo({width:200,top:100},300,ele1=>{
+                ele1.animateTo({width:-200,top:-100})
+            });
+        })
+    })
+
+    </script>
+</body>
+</html>

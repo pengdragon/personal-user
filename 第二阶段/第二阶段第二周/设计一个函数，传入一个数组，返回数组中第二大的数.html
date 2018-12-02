@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			function numTow(arr){
+				//如果考虑去重,写去重函数 由于函数提升 直接写在当前作用域第一行
+				function deWeight(){
+					var newArr = [];
+					for(var i = 0;i<arr.length;i++){
+						if(newArr.indexOf(arr[i]==-1))
+						newArr[i]=arr[i];
+					}
+				}
+				deWeight(arr);
+				//数组排序
+				var newArr = arr.sort(function(a,b){
+					return a-b;
+				});
+				//如果不考虑去重 就用如下方法进行比较；
+				/*for(var i = newArr.length-1;i>=0;i--){
+					if(newArr[i]!=newArr[i-1])
+					return newArr[i-1];	
+				}		*/
+				return newArr[newArr.length-2];//返回数组的第二大的数
+			}
+			var a = numTow([1,4,6,7,8,12,74,74,444,772]); 
+			console.log(a);
+		</script>
+	</body>
+</html>

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			form,input,button{padding:0;margin:0}
+			form{width:300px;
+			height: 100px;
+			margin:200px auto;
+			background: cadetblue;
+			}
+			input{height: 50px;
+			outline:none;				
+			}
+			button{margin-left:0px;
+			width:50px;
+			height: 54px;
+			text-align: center;
+			line-height: 50px;
+			color:blue;
+			outline:none;
+			background: white;
+			border:none;
+			}
+		</style>
+	</head>
+	<body>
+		<form action="" name='' method=''>
+			 <input type="text" id='inp' autocomplete="off"/>
+		     <button id='btn'>登录</button>
+			
+		</form>
+		<script type="text/javascript">
+			/*	有一个文本框, 有一个按钮
+			 当点击按钮时, 验证文本框的值
+			1、用户必须输入内容
+			2、输入的内容必须是纯数字
+			3、不能有0在前面
+			4、不能是小数(不能出现小数点)
+			5、输入的数字必须在5位以上、10位以内
+			
+			5个条件都满足,弹窗提示,文本格式正确
+			 */
+			function $(num){
+				return document.getElementById(num);
+			}
+			var _inp = $('inp');
+			var _btn = $('btn');			
+			_btn.onclick = function(){
+				console.log('进来了')
+				if(!_inp.value)
+				alert('输入不能为空');
+				else if(10<_inp.value.length||_inp.value.length<5){
+       			alert('输入的数字必须在5位以上、10位以内');
+	       		}
+	       		else if(_inp.value.charAt(0)==0){
+	       			alert('第一个数不能为零');  
+	       		}
+	       		else if(isNaN(_inp.value)||_inp.value.indexOf('.')>-1){
+	       			alert('只能时是纯数字');
+	       		}      	
+	       		else{
+	       			alert("正在登陆!请稍后");	
+	       		}
+				}
+			
+		</script>
+		
+		
+	</body>
+</html>

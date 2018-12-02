@@ -1,0 +1,32 @@
+字符串拼接效率非常低，当大量的字符串拼接时，我们采取数组拼接的办法
+即把字符串存在数组里面，然后通过join的方法拼接；
+
+函数的方法可以改变函数内部的的this指向
+call,aplly,bind,改变函数this指向
+1）这三者是函数的方法；
+2）call；多个参数，第一个参数是函数内部this指向，第二个及多个是传入函数的实参；
+3）apply;第一个参数：函数内部this的指向；第二个参数是传入函数的实参集合；
+
+4）bind; 这个比较特殊：第一个参数是函数内部this的指向；第二及多个采纳数
+是传入函数的实参；返回一个修改后的函数体，不执行；
+
+获取非行内样式
+1）通过$box.style.width只能获取行内样式；
+2） return window.getComputeStyle(ele,false)[attr];比如获取width;
+拿到的属性值是带px的;
+3)兼容写法：function getStyle(ele,attr){
+                    if(window.getComputeStyle)
+	    return  window.getComputeStyle(ele,false)[attr];
+	    return ele.currentStyle[attr];
+	}
+
+运动（上下左右），透明度；
+1）$ele:dom对象
+2）attr：属性值
+3）target:目标值
+匀速运动
+1）
+缓冲运动 
+1）
+抛物线运动
+1）

@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        *{margin:0;padding:0}
+        input,button, ul,li{list-style: none;}
+        header{
+           margin:50px auto;
+            width:247px;
+            height:200px; 
+            position: relative;
+        }
+        #inp{
+            height: 30px;
+            width:200px;
+            outline: none;
+            border:1px solid #ccc;
+            position:relative;
+            top:-4px;
+        }
+        button{
+            outline: none;
+            height: 32px;
+            border:none;
+            background: blueviolet;
+            text-align: center;
+            font-size: 22px;
+            color:blue;
+        }
+    #ul{
+       width:200px;
+       border:1px solid burlywood;
+       display: none;
+    }
+    </style>
+</head>
+<body>
+    <header>
+            <input type="text" id="inp" autocomplete="off"><button>搜索</button>
+            <ul id='ul'></ul>
+    </header>
+    
+    <script src="jsonp.js"></script>
+    <script>
+   
+    function fn(res){
+      var data = res.s;
+      var $ul = document.querySelector('#ul');
+      $ul.innerHTML='';
+      for(var i=0;i<data.length;i++){
+          var $li = document.createElement('li');
+          $li.innerHTML=data[i];
+          $ul.appendChild($li);
+
+      }
+    }
+    inp.oninput = function(){
+
+        var val = inp.value;
+        if(val==''){
+            ul.style.display='none';
+        }else{
+            ul.style.display="block";
+        }
+        sendJsonp('https://sp0.baidu.com/5a1Fazu8AA54nxGko9WTAnF6hhy/su',{//绝对路径
+        wd:val,
+        cb:'fn'
+    })
+    }
+    </script>
+</body>
+</html>

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+    .box{height: 500px;
+    width:500px;
+    border:10px solid green;
+    margin-left:10px;
+    background: blue;
+    position: relative;
+    margin:100px auto;
+    }
+    .mini-box{
+        height: 100px;
+        width:100px;
+        background: red;
+        border:10px solid pink;
+        position: absolute;
+    }
+    </style>
+</head>
+<body>
+    <div class="box">
+        <div class="mini-box"></div>
+    </div>
+    <script>
+        var $box = document.getElementsByClassName('box');
+        var $mini_box=$box[0].children;
+        console.dir($box);
+        console.log($box[0])
+        console.log('$box[0]自身的可视高度'+$box[0].offsetHeight)
+        console.log('$box[0]自身的可用高度'+$box[0].clientHeight)
+        console.log('$box[0]自身的边框大小'+$box[0].clientTop)
+        console.log('$box[0]到定位父级顶部的距离'+$box[0].offsetTop)
+        console.dir('查找$box[0]的定位父级'+$box[0].offsetParent)
+        
+        $mini_box[0].onmousedown = function(e){
+            console.log(e);
+            e = e || window.event;
+            var x = e.offsetX;
+            var y = e.offsetY;
+
+
+            //var x = e.clientX-e.offsetX-$mini_box[0].clientLeft;
+            //var y = e.clientY-e.offsetY-$mini_box[0].clientTop;
+            console.log(x);
+           
+            document.onmousemove = function(e){
+             e = e || window.event;
+             var _x = e.clientX-$mini_box[0].offsetWidth;
+             if(_x<0)
+             $mini_box[0].style.left=0+'px';
+             else if(_x>e.clientX-$mini_box[0].offsetWidth)
+             $mini_box[0].style.left=$box[0].clientWidth-$mini_box[0].offsetWidth+'px';
+             else
+             $mini_box[0].style.left=e.clientX-e.offsetX+'px';
+             //$mini_box[0].style.left = e.clientX-x+'px';
+             //$mini_box[0].style.top = e.clientY-y+'px';
+            }
+        }
+        document.onmouseup = function(){
+            document.onmousemove = null;
+        }
+        
+
+        
+    </script>
+</body>
+</html>

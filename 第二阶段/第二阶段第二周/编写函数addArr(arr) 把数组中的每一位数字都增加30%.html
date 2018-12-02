@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			function newMap(arr){
+				var newArr = arr.map(function(item){
+					return item+item*0.3;
+				});
+				return newArr;
+			}
+			var a = newMap([100,150,200,250,300,350,400,450,500]); 
+			console.log(a);
+		</script>
+	</body>
+</html>

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			var arr =[
+			{name:'xiaopenng',
+			age:14,
+			height:'170cm'
+			},
+			{name:'liming',
+			age:18,
+			height:'160cm'
+			},
+			{name:'xiaogang',
+			age:11,
+			height:'180cm'
+			},
+			{name:'zhangsan',
+			age:21,
+			height:'182cm'
+			}];
+			
+			arr.sort(function(a,b){
+				return parseInt(a.height)-parseInt(b.height);
+			});
+			console.log(arr);
+			
+		</script>
+	</body>
+</html>

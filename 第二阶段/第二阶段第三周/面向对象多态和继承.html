@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        class Person {
+            constructor(name,age,height,six){
+                this.name = name;
+                this.height = height;
+                this.six = six;
+                this.age = age;
+            }
+            eat(){
+                console.log('我贼能吃');
+            }
+        }
+        var xiaopeng = new Person('彭龙',23,'170cm','男');
+        var chensijia = new Person('陈思佳',22,'170cm','男');
+        console.log(xiaopeng)
+        console.log(chensijia);
+
+        class Cat extends Person{
+            constructor(name,age,six,color){
+                super(name,age,'',six);
+                this.color=color;
+            }
+        }
+        var cat = new Cat('xiao',2,'nan','red');
+        console.log(cat);
+ </script>
+</body>
+</html>

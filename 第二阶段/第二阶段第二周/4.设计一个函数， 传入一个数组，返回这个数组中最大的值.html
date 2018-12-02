@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			arrMax([241,573,26,45,95,68,68,548,672])
+			function arrMax(arr){
+				for(var i=0;i<arr.length-1;i++){
+					for(var j=i;j<arr.length-1-i;j++){
+						if(arr[j]>arr[j+1])
+						arr[j+1] = arr[j]+(arr[j]=arr[j+1])*0;
+					}
+				}
+				console.log(arr[arr.length-1]);
+			}
+		</script>
+	</body>
+</html>

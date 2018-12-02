@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>滚动屏</title>
+    <style>
+    html,body,ul,li{padding:0;margin:0}
+    ul,li{list-style: none;}
+    ul{
+        height: 160px;
+        width:150px;
+        overflow: hidden;
+        margin:100px auto;
+        position: relative;
+        }
+    .top{
+        width:150px;
+        background: blue;
+        color:pink;
+        position: absolute;
+    }
+    </style>
+</head>
+<body>
+    <ul>
+        <li class='top'>             
+        </li>
+    </ul>
+    <script src="getStyle.js"></script>
+    <script src="move.1.1.0.js"></script>
+    <script>
+        // var flag=false;
+        // move('.top',{top:'-160'},1000,($ele,attr)=>{
+        //     attr = parseFloat(getStyle($ele,attr));
+        //     if( attr<=-160)
+        //     flag = !flag;
+        //     $ele.style.top =  attr+'px';
+        //     console.log(flag)   
+        //     if(flag){
+        //     move('.top',{top:'0'},1000);
+        // } 
+        // })
+          
+    var $box = document.getElementsByTagName('ul')[0];
+    var $li = $box.firstElementChild;
+    for(var i =0;i<20;i++){
+        var $text = document.createTextNode('我在千锋学习HTML ');  
+        $li.appendChild($text);
+    }
+        $li.timer = setInterval(function(){
+           var speed = parseInt(getStyle($li,'top'));
+           speed -=3;
+           if(speed<=-160)
+           speed=0;
+           $li.style.top = speed+'px';
+        },40)
+    </script>
+</body>
+</html>

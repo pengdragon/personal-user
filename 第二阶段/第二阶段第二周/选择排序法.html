@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			//小的放左边
+			var arr1 = [9,8,7,6,5,4,3,2,1];
+			function fn(arr){
+				/*传入引用数据类型数据时 会改变原有数据 怎么不改变原有引用数据*/
+				arr = arr1.slice(0);
+				for(var i=0;i<arr.length-1;i++){
+					for(var j = i+1;j<arr.length;j++){
+					if(arr[i]>arr[j])
+					arr[i] = arr[j]+(arr[j]=arr[i])*0;
+				}
+				}
+				return arr;
+			}
+			var newArr = fn(arr1);
+			console.log(newArr);
+			console.log(arr1);
+			
+		</script>
+	</body>
+</html>

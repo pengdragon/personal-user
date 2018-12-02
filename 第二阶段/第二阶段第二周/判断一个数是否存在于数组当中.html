@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			//定义一个函数 定义两个形参 一个是值 一个是数组 判断这个值是否存在于数组中
+			//如果存在 返回true 不存在 返回false
+			
+			function indexOf(item,arr){
+				for(var i =0;i<arr.length;i++){
+					if(item===arr[i])
+					return i;//如果相等 返回索引
+					//return true;
+				}
+				return -1;//如果相等 返回1
+				//return false;
+			}
+			var a = indexOf(5,[1,2,3,4,5,6,7]);
+			console.log(a);
+		</script>
+	</body>
+</html>

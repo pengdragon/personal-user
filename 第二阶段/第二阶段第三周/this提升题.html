@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var age = 108;
+        setTimeout(function(){
+            var age = 110;
+            console.log(this.age);
+        }, 1000);
+        (function(){
+            var age = 28;
+            var obj = {
+                age: 99,
+                top: function() {
+                    console.log(this.age);
+                },
+                init: function() {
+                        this.top()
+                }
+            }
+            function top() {
+                console.log(this.age);
+                this.age++
+                console.log(age); 
+            }
+            obj.init();//99
+            top()//108 28 109
+        }())
+    
+    </script>
+</body>
+</html>

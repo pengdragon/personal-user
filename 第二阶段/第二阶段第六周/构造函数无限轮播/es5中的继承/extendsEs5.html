@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //每一个函数天生自带prototype属性
+        //每一个实列对象天生自带__proto__属性
+        //每一个实例对象的__proto__,都指向构造函数的prototype
+        var friends = ['tom','jack']; // xxxfff0001
+        function People(name, age) {
+            // 公有属性
+            this.name = name;
+            this.age = age;
+            this.friends = ['tom','jack'];
+        }
+        People.prototype.eat = function() {
+            console.log('我是people类的吃吃吃！');
+        }
+        var person1 = new People('杨惠昌', 23);
+        var person2 = new People('丁吾增', 25);
+        person1.friends.push('孙俊杰');
+        console.log(person2.friends);
+
+        function Cat(name, age, color) {
+            // this.name = name;
+            // this.age = age;
+            this.color = color
+        }
+        // Cat.prototype.eat = function() {
+            //     console.log('我是people类的吃吃吃！');
+            // }
+        // 原型链继承模式
+        Cat.prototype = new People('咪咪', 2);
+        // {name,age}
+        var cat = new Cat('lemon', 10, 'red');
+        cat.friends.push('jerry');
+        var cat2 = new Cat('加菲猫', 2, 'orange');
+        console.log(cat2.friends);
+
+        // 子类 去修改东西, 不会影响父类
+        // 尽量减少函数的创建
+
+        
+        // 父类继承的属性是不可以传值
+        // 把所有的公有属性, 也全变成了子类的共有属性
+
+
+        
+        
+    </script>
+</body>
+</html>

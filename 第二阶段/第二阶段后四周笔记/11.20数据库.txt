@@ -1,0 +1,38 @@
+服务端渲染：
+客户端向服务端发送请求，比如请求一个php文件，服务端接受请求，
+php解析器，完成解析后，返回给客户端；
+
+深拷贝：把引用类型的值赋值给另外一个变量，其中一个改变，另外一个不会改变；
+浅拷贝：把引用类型的地址赋值给另外一个变量（两者之间有影响）；
+
+数据库：
+1）用来存储数据的地方.按照结构化的形式.以表格的形式进行存储
+2）数据类型：关系型数据库：oracel(大型的), mysql(开源免费) ,sql-server, access
+	       非关系型数据库：mongoDB
+3）把id设置成主键：唯一
+
+数据库的增删盖茶：
+1）增加：INSERT INTO user_info(username,password,tel,mark) VALUES("cheifa","114274441","155555555","");；
+ 
+2）查询：查询所有：SELECT * FROM user_info;
+	查询单个：SELECT username FROM user_info;
+	查询多个：SELECT username as '用户名称', tel '电话' from user_info;
+
+3）排序升序：SELECT * FROM user_info ORDER BY age;
+      排序倒序：SELECT * FROM user_info ORDER BY age desc;
+
+4）条件查询： SELECT * FROM user_info where age>18;
+      模糊查询：SELECT * FROM user_info where  username like "%peng";
+5）一个属性数据更新：UPDATE user_info SET username="小彭" where id=2;
+     多个属性数据更新：UPDATE user_info SET username="大鹏",age=11 where id=2;
+
+6）删除一条数据：DELETE FROM user_info where id=2;
+      全部删除： DELETE FROM user_info where id=2 or 1=1;
+
+7)如果id太大 想重置这样写TRUNCATE TABLE TABLE_NAME;
+
+
+
+
+
+

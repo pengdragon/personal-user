@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style type="text/css">
+		body,
+		div {
+			margin: 0;
+			padding: 0;
+		}
+
+		div {
+			position: absolute;
+			width: 66px;
+			height: 45px;
+			background: url(img/1.gif) no-repeat;
+			top: 100px;
+			left: 50px;
+		}
+
+		p,
+		input {
+			margin: 10px;
+		}
+	</style>
+</head>
+<body>
+    <input type="button" value="根据鼠标点击位置移动">
+    <input type="button" value="根据标鼠标轨迹移动">
+    <p>请点击按钮激活功能！</p>
+    <div></div>
+    <script src="../../../../common.js"></script>
+    <script src="../js/move1.1.0.js"></script>
+    <script>
+        
+        var moveImg = (function() {
+            var buton = document.querySelectorAll('input[type=button]');
+            return {
+                init(ele) {
+                    typeof ele == 'string' ? ele = document.querySelector(ele) : '';
+                    this.ele = ele;
+                    this.event();
+                },
+                event() {
+                    var _this = this;
+
+                },
+                // 鼠标点击移动
+                clickMove() {
+
+                },
+                // 鼠标轨迹移动
+                mouseMove() {
+
+                }
+            }
+        }())
+    
+        $button[0].onclick = function() {
+
+        }
+        $button[1].onclick = function() {
+
+        }
+    </script>
+</body>
+</html>

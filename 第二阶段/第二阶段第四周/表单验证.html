@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <style>
+        .form-box {
+            border: 1px solid #ccc;
+            width: 800px;
+            padding: 20px;
+            margin: 20px auto;
+        }
+
+        .form-box p {
+            padding: 6px 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <form class="form-box" autocomplete="on" onsubmit="return false;">
+        <div class="form-group">
+            <label for="username">用户名</label>
+            <input type="text" class="form-control" id="username" name="username" placeholder="请输入用户名" data-error="需要输入6-13位的字母或者下划线">
+            <p class=""></p>
+        </div>
+        <div class="form-group">
+            <label for="phone">手机号</label>
+            <input type="text" class="form-control" id="phone" name="phone" placeholder="请输入手机号" data-error="手机号格式不正确">
+            <p class=""></p>
+        </div>
+        <div class="form-group">
+            <label for="password">密码</label>
+            <input type="password" class="form-control" id="password" name="password" placeholder="请设置密码" data-error="密码格式不正确">
+            <p class=""></p>
+        </div>
+        <div class="form-group">
+            <label for="repassword">再次输入密码</label>
+            <input type="password" class="form-control" name="repassword" id="repassword" placeholder="请设置密码" data-error="两次密码输入不一致">
+            <p class=""></p>
+        </div>
+        <button name="submit" type="submit" class="btn btn-success">确定</button>
+   
+    <script>
+        var checkInput = {
+            username(str) {
+                var reg = /^\w{6,14}$/;
+                return reg.test(str);
+            },
+            password(str) {
+                var reg = /^\w{6,11}$/;
+                return reg.test(str);
+            },
+            phone(str) {
+                var reg = /^1[35789]\d{9}$/;
+                return reg.test(str);
+            },
+            email(str) {
+                
+            }
+        }
+
+        var register = (function(){
+            return {
+                init(ele) {
+                    this.$el = document.querySelector(ele);
+                    this.$inputAll = this.$el.querySelectorAll('input');
+                    this.event()
+                },
+                event() {
+                    var _this = this;
+                    for(let i = 0; i < this.$inputAll.length; i++) {
+                        this.$inputAll[i].onblur = function() {
+                            var $p = this.nextElementSibling;
+                            if(this.value == '') {
+                                $p.className = 'text-danger bg-danger';
+                                $p.innerHTML = '内容不可以为空';
+                            } else {
+                                // 调用对应的方法, 把文本值传入
+                                var bool = checkInput[this.name](this.value);//执行相应的方法
+                                if(bool) {
+                                    // 验证成功
+                                    $p.className = 'text-success bg-success';
+                                    $p.innerHTML = '验证成功';
+                                } else {
+                                    // 验证失败
+                                    $p.className = 'text-danger bg-danger';
+                                    $p.innerHTML = this.getAttribute('data-error');//获取自定义属性
+                                }
+                            }
+                        }
+                    }
+                    this.$el['password'].addEventListener('blur', function() {
+                        _this.$el['repassword'].onblur();
+                    })
+                    this.$el['repassword'].onblur = function() {
+                        var $p = this.nextElementSibling;
+                        if(this.value === _this.$el['password'].value) {
+                            $p.className = 'text-success bg-success';
+                            $p.innerHTML = '验证成功';
+                        } else {
+                            $p.className = 'text-danger bg-danger';
+                            $p.innerHTML = this.getAttribute('data-error');
+                        }
+                    }
+                    
+                    this.$el['submit'].onclick = function() {
+                        var $pAll = _this.$el.querySelectorAll('p');
+                        for(let i = 0; i < $pAll.length; i++) {
+                            if($pAll[i].className.indexOf('text-success') == -1) {
+                                $pAll[i].previousElementSibling.focus();
+                                return;
+                            }
+                        }
+                        alert('成功');
+                    }
+                }
+            }
+        } ())
+        register.init('.form-box');
+        
+    </script>
+</body>
+
+</html>

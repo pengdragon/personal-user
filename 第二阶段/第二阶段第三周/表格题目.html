@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" crossorigin="anonymous">
+    <style>
+        
+    </style>
+</head>
+
+<body>
+    <p>HEllo</p>
+    <table class="table table-hover table-bordered">
+        <thead>
+            <tr>
+                <td>名称</td>
+                <td>年龄</td>
+                <td>职业</td>
+                <td>简介</td>
+                <td>操作</td>
+            </tr>
+        </thead>
+        <tbody class="tbody">
+            <!-- <tr>
+                <td>周杰伦</td>
+                <td>2/8</td>
+                <td>歌手</td>
+                <td>周杰伦（Jay Chou），1979年1月18日出生于台湾省新北市，中国台湾流行乐男歌手、音乐人、演员、导演、编剧、监制、商人。</td>
+                <td>
+                    <button class="btn btn-danger">删除</button>
+                </td>
+            </tr> -->
+
+        </tbody>
+    </table>
+    <script src="table.js"></script>
+    <script>
+        //通过循环遍历，把里面的数据已表格的形式，显示在html中。
+        var data = [{
+                "name": "周杰伦",
+                "age": "28",
+                "profession": "歌手",
+                "introduce": "周杰伦（Jay Chou），1979年1月18日出生于台湾省新北市，中国台湾流行乐男歌手、音乐人、演员、导演、编剧、监制、商人。"
+            },
+            {
+                "name": "布冯",
+                "age": "40",
+                "profession": "足球运动员",
+                "introduce": "吉安路易吉·布冯（Gianluigi Buffon），1978年1月28日出生于意大利卡拉拉，意大利职业足球运动员，司职门将，效力于意甲尤文图斯足球俱乐部。"
+            },
+            {
+                "name": "加内特",
+                "age": "42",
+                "profession": "篮球运动员",
+                "introduce": "凯文·加内特（Kevin Garnett），1976年5月19日出生在美国南卡罗来纳，前美国职业篮球运动员，司职大前锋/中锋，绰号狼王（森林狼时期）、KG（名字缩写）、The BIG TICKET、Da Kid。"
+            },
+            {
+                "name": "李青",
+                "age": "22",
+                "profession": "打野",
+                "introduce": "李青是一个近战战士型英雄，拥有很高的机动性和爆发力，单挑和小规模团战能力很强，同时李青也是非常优秀的打野英雄，非常擅长野区的遭遇战和Gank，是非常致命的英雄人物。"
+            },
+            {
+                "name": "巫妖王",
+                "age": "1000",
+                "profession": "boss",
+                "introduce": "巫妖王是魔兽世界设定中的一个职位，天灾军团的统领，并非专指某人，至今为止共有三代，初代耐奥祖、二代阿尔萨斯、三代伯瓦尔。"
+            }
+        ]
+        
+        table.init(data);
+    </script>
+</body>
+
+</html>

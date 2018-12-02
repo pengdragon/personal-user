@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			//设置一个函数，输入一个日期字符串，返回这个日期是星期几
+			function getDay(str){
+				var arr = ['星期日','星期一','星期二','星期三','星期四','星期五','星期六'];
+				var date = new Date(str);
+				var _date = date.getDay();
+				return arr[_date]
+			}
+			var day = getDay('2018/11/2');
+			console.log(day);
+			
+			
+		
+			
+				
+			
+		</script>
+	</body>
+</html>

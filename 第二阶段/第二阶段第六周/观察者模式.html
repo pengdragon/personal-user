@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <button>按钮</button>
+    <script>
+    const obj={
+        event:{},
+        on:function(eventName,callback){
+            const arr = this.event[eventName] || [];
+            arr.push(callback);
+            this.event[eventName] = arr;
+        },
+        emit(eventName,data){
+            const arr = this.event[eventName];
+            arr.array.forEach((element ,index)=> {
+                element(data);//执行函数
+            });
+           if(typeof this.event[eventName] =='function'){
+               this.event[eventName](data);//执行函数
+           }
+        },
+        remove(eventName,callback){
+            const arr = this.event[eventName];
+            arr.forEach((element,index)=>{
+                if(element === callback){
+                    arr.splice(index,1);
+                }
+            })
+            this.event[eventName]=arr;
+        }
+    }
+     var fn = function(data){
+        console.log(data);
+     }
+        obj.on('eventName',fn);
+        function checkType(data){
+            var str = Object.prototype.toString.call(data);
+            return str.match(/\w+/g)[1];
+        }
+        console.log(checkType([]))
+
+        var arr = [];
+        for(var i =0;i<10;i++){
+            arr[i] = function(){
+                console.log(i);
+            }
+            arr[i].index = i;
+           // arr[i].arguments[0]=i;
+        }
+        arr[7]();
+    </script>
+</body>
+</html>

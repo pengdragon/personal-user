@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			body{background: black;
+			position: relative;
+			padding-top:100px;}			
+			#dian{height: 50px;
+			width:150px;
+			background: #00BFFF;
+			text-align: center;
+			line-height: 50px;
+			color:white;
+			display: block;
+			margin:0 auto;
+			font-size:30px;
+			opacity: 0.9;
+			border:2px solid white;
+			}
+			input{
+				display: block;
+				height: 100px;
+				background-color: black;
+				font-size:100px;
+				color:white;
+				text-align: left;
+				line-height: 100px;
+				margin-left:400px;
+				margin-bottom:100px;
+				margin-top:150px;
+				border-radius: 10px;
+				outline:none;
+				border:none;
+				font-weight: bolder;	
+			}
+			dt{height:50px;
+			width:400px;
+			color:white;
+			font-size:50px;
+			line-height: 50px;
+			margin-left:350px;}
+			img{width:500px;
+			height:500px;	
+			opacity: 0.8;		
+			}
+			dd{height: 20px;
+			width:460px;
+			margin-top:50px;
+			margin-left:837px;
+			font-size:20px;
+			line-height: 20px;
+			background: black;
+			color:white;
+			}
+			dl{width:300px;
+			height: 300px;
+			border-radius: 50%;
+			overflow: hidden;
+			position: absolute;
+			top:100px;
+			left:943px;
+			
+			}
+		</style>
+	</head>
+	<body>
+			<dt></dt>
+			<input  autocomplete="off" type="text" id="inp" value="" />
+			<dl><img src="" alt=""style='width:300px;height:300px;' /></dl>
+			<div href="" id="dian" >开始</div>
+			<dd></dd>
+		
+		<script type="text/javascript">
+	var arr = `喻林=曹忠=陈松柏=韩进香=何直璋
+	=黄恒=刘嘉舒=张行国=胡沛平=夏庆鹏=万欢
+	=陆寒=程宏远=周志情=伍俊杰=黄琼=廖鹏飞=丁吾增
+	=万泽斯=何文灿=余众望=刘涛=刘飞=吴泉涌
+	=周岳奇=唐仁硕=孙志强=宥灯=巫鸿发=彭传榛
+	=曾海花=李敏波=杨奕欣=林伟彬=汤丽琴=汪宏杰
+	=肖高林=蔡万霖=袁礼辉=谢升梅=贺书武=邱灵敏
+	=郑艳婷=钟芳林=钟辉=陈奇志=陈思佳=陈扬康
+	=魏剑波=黄程亮=黄进彬=吴志敏=潘勇=刘开诚
+	=孙湾=谢超琼=盛京华=孙佳伟=陈彦佳=张浩然
+	=黄俊=孙俊杰=杨惠昌=邓勇=杨异能=邓育成=张昌国
+	=王鹏=张家铭=汪瑶瑶=黄校`;		
+	var btn = function(){
+		function $get(element){
+		return document.querySelector(element);
+		}
+		function $create(num){
+		return document.createTextNode(num);
+		}	
+		arr = arr.split('=');			
+		var $dian =  $get('#dian');
+		var $inp =  $get('#inp');
+		var $img =  $get('img');
+		var $dt =  $get('dt');
+		var $dl =  $get('dl');	
+		var $dd = $get('dd');	
+		$inp.value = '即将开始随机点名';
+		$dd.innerHTML=`HTML-1810班级当前共
+		有${arr.length}个学生进入教室`;				
+		return {
+			Init:function(){
+				this.Event();
+			},
+			Event:function(){
+				var _this = this;
+				var flag=true;
+				var interId;
+				$dian.onclick=function(){					
+					flag=!flag;
+					if(flag){
+						$dian.innerHTML="";
+						$dt.innerHTML="";
+						var $text = $create("继续滚动");
+						var $textDt = $create("别看就是你了");
+						$dian.appendChild($text);
+						$dt.appendChild($textDt);
+						clearInterval(interId);
+					}
+					else{
+						$dian.innerHTML="";
+						$dt.innerHTML="";
+						var $text = $create("暂停");
+						var $textDt = $create("正在随机筛选......");
+						$dian.appendChild($text);
+						$dt.appendChild($textDt);
+						interId = setInterval(_this.ShowName,100);	
+					}			
+				}
+			},
+			ShowName:function(){
+					var code = Math.floor(Math.random() * arr.length);					
+					$inp.value = arr[code];
+					$dl.style.border='1px solid blueviolet';							
+					$img.src='img/'+code+'.jpg';
+			}
+		}
+	}();
+	btn.Init();	
+		</script>
+	</body>
+</html>

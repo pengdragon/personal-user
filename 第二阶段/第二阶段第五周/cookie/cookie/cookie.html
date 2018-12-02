@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // cookie: 会话跟踪技术
+        // 设置cookie以后, 所有的http请求, 都会携带cookie信息
+        // 比如用户登录成功, 把用户的验证信息(比如有id, 唯一识别码)存到cookie中,
+        // 发出的http请求都会携带cookie,
+        // 后台可以解析请求头, 获取当前传送的cookie信息
+        
+        // 设置cookie(同源策略)
+        // cookie作用域, 如果没有设置, 默认是当前文件夹, 以及子文件夹都可以使用该cookie其他不可以使用
+        // 只要在作用域内, 开多少个会话, 都可以访问到cookie值
+        // cookie大小： 2kb-4kb
+
+        // 过期时间：如果不设置， 默认当前会话关闭， 就过期 
+        // max-age=60 设置cookie存活时间
+        // expires: 设置到期时间
+        // document.cookie = 'userid=xxff001; max-age=60';
+
+        // cookie 是服务器设置的
+
+        var date = new Date();
+        date.setMonth(11);
+        document.cookie = 'userToken=xxxx000111fff222; expires=' + date;
+
+
+        console.log(document.cookie);
+        
+    </script>
+</body>
+</html>

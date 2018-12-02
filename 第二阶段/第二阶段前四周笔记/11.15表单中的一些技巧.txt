@@ -1,0 +1,103 @@
+
+form表单中获取input元素可以通过name获取；
+1）一个input的时候$form[name]即可获取；
+2）如若有多个input
+
+以注册为例子指点一二：
+1）表单中有用户名，手机号，密码，再次输入密码，提交
+2）表单元素层级大概是：
+ </form>
+    <form action="">
+     <div>
+            <label for=""></label>
+            <input type="text" id=''>
+            <p></p>
+     </div>
+     <div>
+            <label for=""></label>
+            <input type="text" id=''>
+            <p></p>
+    </div>
+    <div>
+        <label for=""></label>
+        <input type="text" id=''>
+        <p></p>
+    </div>
+    <div>
+        <label for=""></label>
+        <input type="text" id=''>
+        <p></p>
+    </div>   
+    <div>
+        <label for=""></label>
+        <input type="text" id=''>
+        <p></p>
+    </div>
+    <button></button>    
+    </form>
+
+3）在form中写onsubmit="return false阻止浏览器默认提交；建立一个对象，在对象里面创建属于
+用户名，手机号，密码的三个方法，每个方法里就写两行代码，第一行是属于自己的正则，第二return reg.test(str);
+此法形参用于接受每个input的value值进行比较;
+
+4）获取input,首先先获取form,通过form和每个input的name值去获取每个input,
+
+5）利用let所声明的for循环进入用户名 手机号 密码三个的失焦函数，获取每个input的下一个元素$p；
+如果this.value为空，给$p添加class名使其显示，在通过$p.innerHTML传入文本‘内容不可以为空’；
+如果不为空，那么久开始调用对象中属于各自的方法， var bool = checkInput[this.name](this.value)，这
+样写减少了很多的代码，不然光凭这个方法得调用三次（当然前提是方法名字和name名一样）；
+通过方法返回来的值就可以确定输入是否符合正则，如果符合则验证成功，则给$p添加class名让其显示成功样式，并通过
+innerHTML的方式往里加入验证成功的字，因为这用户名，手机号，密码验证通过的显示都是一样的；
+如果不符合则验证失败，则给$p添加class名让其显示失败样式，由于验证失败的提示不一样，所以不能直接在
+$pinnerHTML里添加字，利用自定义属性给每个input添加，再通过this.getAttribute('data-error')来获验证
+失败的提示；
+6）给密码input再添加一个监听事件，用来监听再次输入密码，即监听事件里写再次输入密码input的失焦事件；
+7）给再次输入密码添加失去焦点事件 获取$p元素，如果this.value === _this.$el['password'].value成立则
+验证成功 否则验证失败，再给$p添加失败的class名，让其显示输入的密码不一致样式，这些字可以直接写或者
+在input里添加自定义属性，在通过this.getAttribute('data-error');来获取；
+
+8）最后这一步是提交：给所有的$p来一个for循环 谁的class名出现失败的样式，立即给上一个元素即input聚焦并且
+终止程序执行  if($pAll[i].className.indexOf('text-success') == -1) {
+                                $pAll[i].previousElementSibling.focus();
+                                return;
+                            }
+在for循环外输出成功；
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

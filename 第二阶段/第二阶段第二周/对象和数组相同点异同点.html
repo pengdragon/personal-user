@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			//第一点 初始化 对象需要写属性名称 数组不用写 默认有序即索引或者属性名称；
+			var obj = {
+				'name':'xiaopeng',
+				'age':23,
+				'height':'170cm'
+			}
+			var arr = [
+			'xiaopeng',23,'170cm']
+			console.log(arr);
+			//第二点 修改属性值
+			obj.age = 25;
+			obj['height'] = '175cm';
+			console.log(obj);
+			
+			arr['1'] = 25;
+			arr['2'] = '175cm';
+			console.log(arr)
+			
+			//第三点 增加属性以及属性值
+			obj.six = 'men';
+			obj['hobby'] = '吃';
+			console.log(obj);
+			
+			arr['six'] = 'men';
+			arr['hobby'] = '吃';
+			console.log(arr);
+			
+			var obj1 = {
+				'name':'xiongbin',
+				'age':23,
+				'six':'men',
+				'friend':{
+					'name':"xiaopeng",
+					'age':25,
+					'six':'men'
+				}
+			}
+			console.log(obj1.friend.name);
+		</script>
+	</body>
+</html>

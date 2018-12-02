@@ -1,0 +1,29 @@
+{
+    "code":0,
+    "data":[
+        {
+            "id": 1,
+            "title": "牙刷",
+            "price": "26",
+            "src": "xxxxx.png"
+        },
+        {
+            "id": 2,
+            "title": "牙膏",
+            "price": "30",
+            "src": "xxxxx.png"
+        },
+        {
+            "id": 3,
+            "title": "毛巾",
+            "price": "16",
+            "src": "xxxxx.png"
+        },
+        {
+            "id": 4,
+            "title": "脸盆",
+            "price": "48",
+            "src": "xxxxx.png"
+        }
+    ]
+}

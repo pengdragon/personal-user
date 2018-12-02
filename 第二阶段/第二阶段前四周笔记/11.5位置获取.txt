@@ -1,0 +1,69 @@
+事件
+1）用户与浏览器发生交互的瞬间简称事件；
+
+事件处理程序
+1）在发生事件时，处理事件的函数，称为事件处理程序；
+当用户在页面点击按钮时，浏览器找到当前按钮的对象，执行对象上面的onclick方法；
+
+常用事件（事件名称是不带on的）
+1）onclick;单击事件；
+2）ondblclick；双击事件
+3）oncontextmenu;鼠标右键；
+4）文本框获取焦点：$inp.onfous;
+5）文本框失去焦点：$inp.onblur;
+6）检测文本框值得改变:
+      $inp.change;当文本框的失去焦点，如果文本框的值比较上次的值
+      有改变则触发，否则不触发（中途变成谁无所谓，只要结果不变心）
+      $inp.oninput;只要文本框的值发生改变，立即触发；
+   （文本框只要变一次就会触发 ）
+7）鼠标移入事件：
+      $box.onmouseover;所有的子元素都会触发该事件
+      $box.onmouseenter;只会元素本身触发
+8）鼠标移出事件：
+      onmouseout;所有的子元素都会触发该事件；
+      onmouseleave;只会元素本身触发
+9）鼠标移动事件：
+      onmousemove;
+10）scroll；滚动事件，想让谁滚动就加在谁身上；
+
+距离的获取
+1）$box.scrollTop;滚动距离，
+     $box.scrollHeight;滚动高度，即真实高度；
+
+     $box.offsetHeight;可视高度，包括边框
+     $box.clientHeight;可用高度，不包括边框
+     $box.clienTop;盒子的上边框高度；
+	
+     $box.offsetWidth;可视宽度，包括边框
+     $box.clientWidth;可用宽度，不包括边框
+     $box.clientLeft;盒子的左边框宽度；
+
+     $box.offsetTop;相对定位父级，距离顶部的距离；父级：必须有定位，才能是爹；
+     如果都没有定位，默认以body为父元素(其实是以文档为父元素即整个html)
+     $box.offsetLeft;相对定位父级，距离左边的距离；
+
+     $box.offsetParent;查找定位父级；
+
+鼠标事件
+1）$box.onmousedown;鼠标按下,通过event来获取事件基本信息
+在IE里面，event是一个全局属性；兼容写法event = envent||window.event;
+2）$box.onmouseup;鼠标抬起
+3）$box.onmousemove;鼠标移动
+获取鼠标位置
+1）pageX/Y;到顶部真实高度，相当于是clientY+scrollTop;
+2）clientX/Y;顶部高度
+3）offsetX/Y;相对于当前元素的位置；
+
+
+
+
+
+
+
+
+
+
+
+
+
+

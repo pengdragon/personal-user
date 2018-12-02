@@ -1,0 +1,187 @@
+知识点
+1）obj+1返回"[object][object]1",
+2）即obj.toString()返回"[object][object]",返回的是一个对象，数据类型
+是object;
+
+ajax
+1）可以让用户主动向服务器发送请求，获取数据
+特别注意：数据传输时，传输格式都是字符串，即使你请求的html文件，里
+面的内容也可能是js内容；
+
+2）具体请求步骤：
+	A:先有个手机：const xhr = new XMLHttpRequest();
+
+	手机代开拨号手机 请求方式，请求地址 是否异步：
+	xhr.open('GET','ajax.php',true)；
+	
+	手机发送：xhr.send(null);
+
+	监听状态改变：0：没开始；1：打开；2：发送；3：等待；4：结果；
+	xhr.onreadystatechange = function(){
+	if(xhr.readyState == 4 && xhr.status == 200){
+		const data = JSON.parse(xhr.responseText);
+		}
+	}
+	
+	B:先有个手机：const xhr = new XMLHttpRequest();
+
+	手机代开拨号手机 请求方式，请求地址 是否异步：
+	xhr.open('POST','ajax.php',true)；
+	var obj={};
+	//发送前是以j默认son形式显示还是以表单形式显示
+	//xhr.setRequestHeader('Content-type','application/x-www-form-urlencoded');
+	手机发送：xhr.sed(JSON.stringify(obj));
+
+	监听状态改变：0：没开始；1：打开；2：发送；3：等待；4：结果；
+	xhr.onreadystatechange = function(){
+	if(xhr.readyState == 4 && xhr.status == 200){
+		const data = JSON.parse(xhr.responseText);
+		}
+	}
+静态资源：决定好取回的数据用途
+1）加载css
+2）加载js
+3）加载字体
+4）加载图片
+
+AJAX的形式
+1）拿到的数据，取决于自己；
+
+改变url的地址
+location
+form表单提交（get，post）
+iframe
+a标签
+
+http常用状态码
+1）2xx:2开头的请求成功；
+2）
+301：永久重定向；重定向（默认找最近的服务器获取数据，网购发货地点类似）
+302：临时重定向；
+304:  服务器数据并未发生改变则让客户端继续使用缓存；
+3) 
+4xx：客户端出问题；
+404：请求资源未找到；
+403：请求资源没有权限；
+5)    5xx:
+500：服务器内部错误；
+
+事物：一件完整的事情；
+http事物：一个完整http请求；
+
+http协议：超文本传输协议
+TCP三次握手：确保客户端和服务端建立连接
+TCP四次挥手；
+
+报文
+1）请求首部包括：
+	起始行：请求方式，请求地址，http协议的版本号；
+	User-Agent:代理，浏览器代理发送请求；
+	【注意】：请求头部一般会存放一些用户的验证信息；
+2）请求主体：发送的数据，get请求默认没有，post才有数据；
+
+
+3）响应头部包括：
+	起始行：http协议版本号和状态码
+	Date:服务器当前时间；
+	Server：服务器的信息
+
+4）响应主体：服务端向客户端返回的数据
+
+附录：
+// 把不确定的参数, 设置成一个集合(无序集合), 用对象
+/*
+    {
+        method,
+        data,
+        success(){}
+    }
+
+*/
+function sendAjax(url, obj) {
+    const xhr = new XMLHttpRequest();
+    // 给对象中的参数设置默认值
+    const _default = {
+        method: 'GET',
+        data: null,
+        success: undefined
+    }
+    // 替换默认值
+    // 把obj的值替换到_default中, 如果obj没有, 使用默认值
+    for(var key in _default) {
+        if(key in obj) {
+            _default[key] = obj[key];
+        }
+    }
+    // 拼接url
+    _default.method = _default.method.toUpperCase()
+    if(_default.method == 'GET') {
+        // url拼接
+        // 先判断地址有没有?号
+        let flag = url.includes('?') ? "&" : "?";//如果存在?那么就是& 不存在？就是？；
+        url += flag;
+        for(var i in _default.data) {
+            let keyValue = `${i}=${_default.data[i]}`;
+            url += keyValue + '&';
+        }
+        url += _=Date.now();
+        console.log(url);
+
+        //get请求， 发送为null
+        _default.data = null;
+    } else if(_default.method == 'POST') {
+        
+        _default.data = JSON.stringify(_default.data);
+        console.log( _default.method );
+    } else {
+        console.log('告辞!');
+        return;
+    }
+    xhr.open(_default.method, url, true);
+    //xhr.setRequestHeader('Content-type','application/x-www-form-urlencoded');
+    xhr.send(_default.data);
+    xhr.onreadystatechange = function() {
+       
+        if(xhr.readyState == 4 && xhr.status == 200) {
+          
+            console.log(2)
+            let data = xhr.responseText;
+           // console.log(typeof data);
+           //console.log(1111);
+           console.log(data);
+            if(typeof _default.success === 'function') {
+                _default.success(data);
+            }
+        }
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

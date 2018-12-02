@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <form action="" method="get" id="form">
+        用户名<input type="text" name="username">
+        <p class="error"></p>
+    </form>
+    <script src="js/ajax.js"></script>
+    <script>
+        var form = (function(){
+            const $form = document.getElementById('form');
+            const $usernameInp = $form["username"];
+            const $errorP = $form.querySelector('.error');
+            // console.log($errorP, $usernameInp);
+
+            return {
+                init() {
+                    this.event();
+                },
+                // init:function(){}
+                event() {
+                    let _this = this;
+                    $usernameInp.onchange = function() {
+                        let val = this.value;
+                        // 发送ajax
+                        sendAjax('php/check_username.php', {
+                            method:'post',
+                            data: {
+                                username: val
+                            },
+                            success(res) {
+                                res = JSON.parse(res);
+                                if(res.code == 0) {
+                                    // 用户名不存在
+                                    $errorP.innerHTML = '用户名称可以使用'
+
+                                } else {
+                                    // 用户名已经存在
+                                    $errorP.innerHTML = '用户名称已存在'
+                                }
+                                console.log(res);
+                            }
+                        });
+                    }
+                }
+            }
+        }())
+        // 
+        form.init();
+    
+    
+    </script>
+</body>
+</html>

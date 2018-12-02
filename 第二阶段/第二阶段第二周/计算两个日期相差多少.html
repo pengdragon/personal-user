@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			var date1 = prompt('请输入日期1');
+			var date2 = prompt('非常好，请输入日期2');
+			function dateDistence(arr1,arr2){
+				var date1 = new Date(arr1);
+			    var date2 = new Date(arr2);
+			    var miliSecond = date1.getTime() - date2.getTime();
+			    miliSecond = Math.floor(Math.abs(miliSecond) / 1000);
+			     // 获取秒
+		        var s = miliSecond % 60;
+		        // 获取分钟
+		        var f = Math.floor(miliSecond / 60) % 60;
+		
+		        var h = Math.floor(miliSecond / 60 / 60) %  24;
+		
+		        var day = Math.floor(miliSecond / 60 / 60 / 24);
+		
+		        // console.log('相差' + day + '天')
+		        return (`相差${day}天， ${h}小时，${f}分钟, ${s}秒`);
+			}
+			
+			var yeah = dateDistence(date1,date2);
+			alert(yeah);
+			
+		</script>
+	</body>
+</html>

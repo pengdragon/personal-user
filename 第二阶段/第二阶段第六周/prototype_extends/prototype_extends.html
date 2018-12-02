@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script>
+          function People(name,age){
+            if(this instanceof People){
+                this.name=name;
+                this.age= age;   
+                People.prototype.eat=function(){
+                    console.log('我喜欢吃');
+                }        
+            }else{
+                return new People(name,age);
+            }
+        }
+        function Cat(){
+        }
+        var obj =  People('chensijia',15);
+        Cat.prototype = obj;
+        var cat = new Cat();
+        cat.name='xiaopeng';
+        console.log(cat.name)
+        console.log(obj.name)
+        console.log(cat.age)
+        console.log(cat.eat());
+        //第一种原型链继承 
+        // function People(name,age){
+        //     if(this instanceof People){
+        //         this.name=name;
+        //         this.age= age;   
+        //         People.prototype.eat=function(){
+        //             console.log('我喜欢吃');
+        //         }        
+        //     }else{
+        //         return new People(name,age);
+        //     }
+        // }
+        // function Cat(){
+        // }
+        // Cat.prototype =  People('chensijia',15);
+        // var cat = new Cat();
+        // console.log(cat.name)
+        // console.log(cat.age)
+        // console.log(cat.eat());
+        
+        
+        </script>
+</body>
+</html>

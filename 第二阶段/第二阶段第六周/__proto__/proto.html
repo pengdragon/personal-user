@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function fn(name,age){
+            this.name=name;
+            this.age=age;
+            fn.prototype.eat=function(){
+                console.log('贼能吃');
+            }
+        }
+        var obj = new fn('陈思佳',22);
+        var obj2 = new fn('彭long',18);
+        console.log( obj.__proto__==obj2.__proto__)
+        //console.log(fn.prototype.eat());
+      obj.__proto__= fn.prototype;
+      var biaodan ={
+          username:function(str){
+            var reg=;
+           return reg.test(str);
+          },
+          passwork(){
+
+          }
+      }
+      var bool = biaodan.username('valyue');
+      if(bool){
+
+      }else{
+
+      }
+      function biaodan(){
+       this.prototype.username = function(str){
+        var reg=;
+        return reg.test(str);
+       }
+       this.passwork = function(str){
+        var reg=;
+        return reg.test(str);
+       }
+      }
+      var chensi = new biaodan();
+      var peng = new biaodan();
+      var bool = chensi.__proto__.username('xxx');
+      if(bool){
+
+      }else{
+
+      }
+      chensi.username =1;
+      peng.username
+     </script>
+</body>
+</html>
