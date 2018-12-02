@@ -1,0 +1,21 @@
+ 初步git:
+1)用户名：git config --global user.name "pengdragon"
+2)邮箱：ssh-keygen -t rsa -C1466771313@qq.com
+ 3)成功后在用户管理员路径下生产一个.ssh文件夹，进入.ssh文件夹把id_rsa.pub文件
+拖到编辑器里转译成一串代码，将代码原封不动复制到个人github设置->SSH中，即成功绑定自己电脑
+和github了；
+4）github上其他人的项目可以拉到自己的仓库中，可进行再次开发；但是修改后不能更新到
+对方的github中，除非是合作的关系；
+
+git使用：
+1）github上创建一个仓库，把仓库地址获取，在想要存放的路径里利用git命令 git clone 地址
+
+2）命令三部曲：git add .
+	          git commit -m '说明'
+	           git push origin master;
+3) git commit -m '说明';此命令要常巧，记录步骤的；
+ git push origin master;发送到远程服务器；
+git add .；添加所有文件，当前git在哪个路径，就把哪个路径以及子路径全添加；
+
+4）reflog 查看git commit -m '说明';命令所记录的步骤，步骤前有id号，可通过git reset --hard
+id号回到想回到的版本；
