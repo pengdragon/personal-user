@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <input type="checkbox" class="check-all">全选
+    <ul>
+        <li class="item"><input type="checkbox">1</li>
+        <li class="item"><input type="checkbox">2</li>
+        <li class="item"><input type="checkbox">3</li>
+        <li class="item"><input type="checkbox">4</li>
+    </ul>
+    <script src="../js/jquery.js"></script>
+    <script>
+        var $checkAll = $('.check-all');
+        var $allInput =  $('ul input');
+        $checkAll.click(function() {
+            if($(this).prop('checked')) {
+               $allInput.prop('checked', 'true');
+            } else {
+               $allInput.prop('checked', false);
+            }
+        })
+       $allInput.click(function() {
+           var flag = true;
+           $allInput.each(function(i){
+            //    有一个没有被选中
+                if(!$(this).prop('checked')) {
+                    // 让全选按钮不被选中
+                    $checkAll.prop('checked', false);
+
+                    flag = false;
+                    // 终止each循环
+                    return
+                }
+            })
+            if(flag) $('.check-all').prop('checked', true);
+        })
+    </script>
+</body>
+</html>

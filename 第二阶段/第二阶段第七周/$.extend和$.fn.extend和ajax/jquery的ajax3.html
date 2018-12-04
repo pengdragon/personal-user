@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script src="js/jquery.js"></script>
+    <script>
+        
+        // $.get('json/a.json', {_: Date.now()}, function(data) {
+
+        //     console.log(data);
+        // }, 'json')
+        // post请求方式模式是form Data格式
+        // $.post('xxx/xxx', {name: 'xiaolan'}, function() {
+
+        // })
+        /* 
+        // xhr.send()
+        // 可以在这个函数内设置头部验证信息
+        beforeSend 在发送请求之前调用，并且传入一个XMLHttpRequest作为参数。
+        关于回调函数
+        error 在请求出错时调用。传入XMLHttpRequest对象，描述错误类型的字符串以及一个异常对象（如果有的话）
+        success 当请求之后调用。传入返回后的数据，以及包含成功代码的字符串。
+       
+        无论成功还是失败, 都会调用该函数
+        complete 当请求完成之后调用这个函数，无论成功或失败。传入XMLHttpRequest对象，以及一个包含成功或错误代码的字符串。
+        */
+        $.ajax('php/a.php', {
+            type: 'POST',
+            // 如果向发送json字符串
+            // 设置
+            contentType: 'application/json',
+            // 需要data的值默认是json字符串
+            data: JSON.stringify({
+                name: 'xxx',
+                age: 18
+            }),
+            success: function(res) {
+                console.log(res)
+            },
+            error(res) {
+                console.log('失败了')
+            },
+            complete(res) {
+                console.log('完成了')
+            }
+        })
+
+    
+    </script>
+</body>
+</html>

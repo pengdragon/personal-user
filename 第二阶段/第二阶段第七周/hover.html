@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        ul {
+            width: 600px;
+            margin: 0 auto;
+            list-style: none;
+        }
+        .item {
+            cursor: pointer;
+            color: #fff;
+            text-align: center;
+            font-size: 16px;
+            height: 60px;
+            line-height: 60px;
+            transition: all .2s;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.6);
+            box-shadow: inset -3px 3px 5px 0px rgba(0,0,0,0.6);
+        }
+    
+    </style>
+</head>
+<body>
+    <ul>
+       <li class="item">这是一个标题</li>
+       <li class="item">这是一个标题</li>
+       <li class="item">这是一个标题</li>
+       <li class="item">这是一个标题</li>
+       <li class="item">这是一个标题</li>
+       <li class="item">这是一个标题</li>
+       <li class="item">这是一个标题</li>
+       <li class="item">这是一个标题</li>
+       <li class="item">这是一个标题</li>
+       <li class="item">这是一个标题</li>
+    </ul>
+    <script src="jquery.js"></script>
+    <script>
+        // 模仿一个鼠标经过的效果，做成jq插件
+        $.extend({
+            // 添加一个随机色函数
+            getColor: function() {
+                var str = '0123456789abcdef';
+                var color = '#';
+                for(var i = 0; i < 6; i++) {
+                    color += str[Math.floor(Math.random() * str.length)];
+                }
+                return color;
+            }
+        })
+        $.fn.extend({
+            hover(styleObj) {
+                console.log(this)
+                // this代表当前jq对象
+                this.each(function(i) {
+                    // 先获取本身的样式,  用来恢复样式
+                    // 每一个dom元素的原本样式可能不一样, 所以分别进行存储
+                    // 把他存到这个dom对象的oldStyle属性上
+                    // this代表的就是当前的dom对象
+                    this.oldStyle = {}
+                    // 改变了什么属性, 就获取这个属性的原本值
+                    for(var attr in styleObj) {
+                        this.oldStyle[attr] = $(this).css(attr);
+                    }
+                })
+                // 鼠标经过的样式
+                this.mouseenter(function() {
+                    $(this).css(styleObj)
+                })
+                // 鼠标移出
+                this.mouseleave(function() {
+                    $(this).css(this.oldStyle)
+                })
+            }
+        })
+        // 给每一个li添加一个背景颜色，颜色为随机
+        $('ul .item').each(function() {
+            $(this).css('background', $.getColor())
+        })
+
+        $('ul .item').hover({height: 80, 'font-size': 20, 'line-height': '80px', background: $.getColor()});
+        
+    </script>
+</body>
+</html>

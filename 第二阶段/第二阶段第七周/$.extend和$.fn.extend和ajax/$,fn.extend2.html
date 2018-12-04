@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .box {
+            background: red;
+            width: 100px;
+            height: 100px;
+            transition: all .1s;
+        }
+        .box:hover {
+            width: 200px;
+            height: 200px;
+            background-color: blue;
+        }
+    
+    </style>
+</head>
+<body>
+    <div class="box">
+        123
+    </div>
+    <span class="mini-box"></span>
+    <script src="js/jquery.js"></script>
+    <script>
+        // 相当于是在$.prototype上合并对象
+        $.fn.extend({
+            getDom: function() {
+                var arr = []
+               this.each(function(i) {
+                   arr.push(this.nodeName.toLowerCase());
+               })
+               return arr; 
+            }
+        })
+        var arr = $('.box').getDom();
+        $('.box').hover({
+            width: 200,
+            height: 200
+        })
+        // $('.mini-box').getDom();
+        console.log(arr);
+    
+    </script>
+</body>
+</html>

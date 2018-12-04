@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var obj = {
+            name: 'xxx',
+            age: 20,
+            obj: {name: 'lilan', age: 28},
+            fn: function(){}
+        }
+        function deepCopy(obj) {
+            var newObj = {} 
+            if(obj instanceof Array) {
+                newObj = []
+            }
+            function _deep(oldObj, newObj) {
+                for(var attr in oldObj) {
+                    if(typeof oldObj[attr] == 'object' && typeof oldObj[attr] != null) {
+                        if(oldObj[attr] instanceof Array)  newObj[attr] = [];
+                        else newObj[attr] = {};
+                        newObj[attr] = {};
+                        _deep(oldObj[attr], newObj[attr]);
+                        continue;
+                    }
+                    newObj[attr] = oldObj[attr];
+                }
+            }
+            _deep(obj, newObj);
+
+            return newObj;
+        }
+        
+        // var obj2 = {}
+        // deepCopy(obj, obj2);
+        
+        // obj2.obj = {}
+        // deepCopy(obj.obj, obj2.obj);
+    
+        // function deepCopy(oldObj, newObj) {
+        //     for(var attr in oldObj) {
+        //         if(typeof oldObj[attr] == 'object' && typeof oldObj[attr] != null) {
+        //             continue;
+        //         }
+        //         newObj[attr] = oldObj[attr];
+        //     }
+
+        //     // return newObj;
+        // }
+    </script>
+</body>
+</html>

@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>手风琴</title>
+    <!-- <link rel="stylesheet" href="css/banner.css"> -->
+    <style>
+        html,body,div,ul,ol,li{margin:0;padding:0}
+        ul,ol,li{list-style: none}
+        .swrapper{
+    width:1200px;
+    height:240px;
+    position:relative;
+    margin:100px auto; 
+    }
+    .box{
+    position: absolute;
+    left:0;
+    top:0;
+    width:1200px;
+    height:240px;
+    font-size: 0;
+    background: burlywood;
+     overflow: hidden; 
+    }
+
+    .box li{
+    float:left;
+    position: absolute;
+    }
+
+    </style>
+</head>
+<body>
+    <div class='swrapper'>
+        <ul class='box'>
+            <li><img src="images/1.jpg" alt=""></li>
+            <li ><img src="images/2.jpg" alt=""></li>
+            <li><img src="images/3.jpg" alt=""></li>
+            <li><img src="images/4.jpg" alt=""></li>
+            <li><img src="images/5.jpg" alt=""></li>
+            <li ><img src="images/6.jpg" alt=""></li>
+        </ul>
+    </div>
+    <script src="js/jquery.js"></script>
+    <script>
+        //初始化定位
+        $('.box').children('li').each(function(){
+            $(this).css('left',$(this).index()*200);
+        })
+        //鼠标移入
+        $('.box').on('mouseenter','li',function(){
+            $('.box').children('li').each(function(){
+                $(this).stop();
+            })
+            //获取当前元素前面所有的元素
+            $(this).prevAll().each(function(){
+                //给触碰元素前面所有的元素重新定位
+                $(this).animate({left: $(this).index()*106})
+                console.log($(this).index())
+            })
+            //获取当前元素后面所有的元素
+            $(this).nextAll().each(function(){
+                //给触碰元素后面所有的元素重新定位
+                $(this).animate({left:($(this).index()-1)*106+670})
+            })
+            //给触碰的元素重新定位
+            $(this).animate({left:$(this).index()*106})
+           
+        })//鼠标移出
+        $('.box').on('mouseleave',function(){
+       
+            $(this).children('li').each(function(){
+                $(this).stop();
+                $(this).animate({left:$(this).index()*200})
+            })
+           
+        })
+    </script>
+</body>
+</html>
