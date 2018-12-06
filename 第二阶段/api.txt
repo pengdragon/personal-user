@@ -1,0 +1,26 @@
+1. 获取图片资源
+api https://dev.91jianke.com:1091/id_v2_5/search_img
+
+requert: 
+	{
+		page_no=1, // 查询的页码
+		page_size= 50,// 一页返回多少条数据
+		q='帅哥' // 搜索资源的关键字
+	}
+
+response: 
+	{
+		code: 0,
+		data: [
+			{
+				height:"1024", // 图片真实高度
+				img:"http://pic17.nipic.com/20111027/6443681_105458202169_2.jpg", // 图片地址
+				imgsize:"114KB",
+				imgtype:"JPEG",
+				thumb:"http://p5.so.qhimgs1.com/t01b69c00dfc673488b.jpg", // 缩略图
+				title:"<em>帅哥</em>模特摄影图_<em>帅哥</em>模特_男性男人_人物图库", //图片描述
+				width:"683" // 图片宽度
+			}
+		       ], 
+		msg: "" // 如果失败, 返回的错误信息
+	}

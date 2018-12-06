@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        .clearfix:after {
+            content: ".";
+            display: block;
+            clear: both;
+            visibility: hidden;
+            height: 0;
+            font-size: 0;
+        }
+
+        .contain {
+            height: 100vh;
+            overflow-y: auto;
+            width: 999px;
+            margin: 0 auto;
+        }
+
+        .show-box {
+            padding-top: 60px;
+            margin: 0 auto;
+            list-style: none;
+        }
+
+        .show-box>li {
+            float: left;
+        }
+
+        .img-list {
+            border: 1px solid #ccc;
+            margin: 10px auto;
+        }
+
+        .img-list img {
+            max-width: 100%;
+            max-height: 100%;
+        }
+
+        .search {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 60px;
+            text-align: center;
+            line-height: 60px;
+            background-color: #fff;
+        }
+
+        .search input {
+            width: 300px;
+            height: 40px;
+            line-height: 40px;
+        }
+
+        .search button {
+            height: 40px;
+            line-height: 40px;
+            background-color: #e34;
+            margin-left: 10px;
+            border: none;
+            padding: 0 40px;
+            color: #fff;
+            box-sizing: content-box;
+            box-shadow: 1px 1px 4px 0px rgba(0, 0, 0, 0.8);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="contain">
+        <div class="search">
+            <input type="text" placeholder="请输入搜索内容" id="inp" autocomplete="off">
+            <button id="btn">搜索图片</button>
+        </div>
+        <ul class="show-box clearfix" id='ul'>
+
+        </ul>
+    </div>
+    <Script src="../jquery.js"></Script>
+    <!-- <script src="js/ajax2.0.js"></script> -->
+    <script src="js/waterfall.js"></script>
+    <script>
+        var waterFall = new WaterFall({
+            $el: '.show-box',
+            // 展示图片的宽度
+            width: 200
+        })
+        var _default = {
+            page_num: 1,
+            page_size: 40,
+            q: '刘亦菲'
+        }
+        //js中的ajax
+        // sendAjax('https://dev.91jianke.com:1091/id_v2_5/search_img', {
+        //   data: _default
+        // //   complete(){
+        // //       console.log(8)
+        // //   }
+        // }).then(data=>{
+        //     data = JSON.parse(data);
+        //     if(data.code==0){
+        //         waterFall.insertData(data.data);
+        //     } 
+        // })
+        $.ajax('https://dev.91jianke.com:1091/id_v2_5/search_img', {
+            data: _default,
+            success(data) {
+                waterFall.insertData(data.data);
+            },
+        })
+        inp.onkeydown = function (e) {
+            e = e || window.event;
+            var keyCode = e.keyCode || e.which;
+            if (keyCode == 13)
+                btn.click();
+        }
+        btn.onclick = function () {
+            _default.q = inp.value;
+            //jQ对象中的ajax
+            $.ajax('https://dev.91jianke.com:1091/id_v2_5/search_img', {
+                data: _default,
+                success(data) {
+                    waterFall.insertData(data.data);
+                },
+            })
+        }
+    </script>
+</body>
+
+</html>

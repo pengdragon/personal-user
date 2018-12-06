@@ -1,0 +1,87 @@
+npm
+1）安装nodejs时会默认安装npm；
+2）安装包管理工具，开发者把自己开发的插件上传到npm的服务器上，提供给其他
+开发者使用
+3）基本命令：
+npm install packagename;安装指定的安装包,默认安装最新版本，下一条就安装指定版本
+npm install packagename@0.0.1;安装指定版本的安装包
+npm update packagename；更新安装包
+npm uninstall packagename;卸载安装包
+npm help;帮助命令
+npm init;项目初始化，创建一个package.json配置文件，描述你整个项目的
+基本信息，package.json
+npm publich;发布插件到npm
+4）安装包分两类
+A:开发环境使用：进行编译的文件比如css,html，js,image压缩
+比如安装gulp一个大包工具，只需要在开发环境使用，
+使用命令：npm install gulp --save-dev(-D)
+
+B:开发环境和正式环境使用：jquery;
+比如安装一个jquery，继续用在开发环境使用，也要在
+正式环境中使用；使用命令：npm install jquery --save(-S)
+
+cnpm
+1）npm的镜像文件
+2）使用和npm一样，只不过多了一个c
+
+包管理工具yarn：作为拓展即可
+
+总结：
+1）从npm获取到所需的文件，项目做好需要上传github时，由于npm下载的包太多，上传github
+太慢，此时在项目中建立一个文件.gitignore,这样文件的作用是上传github是忽略node_modeles文件夹；
+等需要开发时，从github挡下来，由于其是有package.json文件的，因此在命令行输入 cnpm install即可
+获取以前的node_modules文件夹；
+2）每次做项目都应该先来个项目初始化npm init；生成一个package.json文件，这个文件记录了node_modeles
+文件夹里所有的文件，项目想要转移是，把node_modules先删除，再转移，由于项目拥有package.json
+文件，转移后只需 cnpm install即可；
+3）A:安装nodejs的同时会附带安装npm;安装完nodejs之后先打开cmd输入命令node -v;如果出现版本号则说
+明安装nodejs成功，同时也意味着安装npm成功；
+      B:百度cnpm点击淘宝NPM镜像，之后找到使用说明中的地址，将
+地址npm install -g cnpm --registry=https://registry.npm.taobao.org复制到cmd中然后回车；
+       C：在cmd命令行中输入cnpm install gulp -g回车；即在全局中安装gulp,这东西是正式环境中使用，作为
+开发者，除了做上面这一步还需要在自己的项目中cnpm install gulp；
+       D：想安装插件时，在项目中根目录下；
+	npm install packagename;安装指定的安装包,默认安装最新版本，下一条就安装指定版本
+	npm install packagename@0.0.1;安装指定版本的安装包
+	npm update packagename；更新安装包
+	npm uninstall packagename;卸载安装包
+	npm help;帮助命令
+	npm init;项目初始化，创建一个package.json配置文件，描述你整个项目的
+	基本信息，package.json
+	npm publich;发布插件到npm
+       E:如果想同时安装多个插件，npm install packagename packagename packagename;
+插件名称之间用空格隔开；
+       F：特别说明。初始化项目npm init一定要有，它是用来记录你所安装过得插件的，即使插件删除了，也
+可以通过它来获取；
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

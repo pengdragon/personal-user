@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var arr = [10,5,20,100,1]; 
+        var arr = [
+            {
+                index: 0,
+                val: 10
+            },
+            {
+                index: 1,
+                val: 25
+            },
+            {
+                index: 2,
+                val: 1
+            },
+            {
+                index: 3,
+                val: 100
+            }
+        ]
+        arr.sort(function(a, b) {
+            return a.val - b.val
+        })
+        console.log(arr[0].index)
+        // return arr[0].index;
+        
+    </script>
+</body>
+</html>
