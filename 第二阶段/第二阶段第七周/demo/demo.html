@@ -4,9 +4,37 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <title>验证lcass类</title>
 </head>
 <body>
-    
+    <script>
+        class Perpel{
+            constructor(name){
+                //super();
+                this.name = name;
+                this.eat()
+            }
+            eat(){
+                console.log('共有方法')
+            }
+        }
+        class Cat extends Perpel{
+            constructor(name){
+                super(name);//此继承是公有继承公有，共有继承共有
+               
+            }
+            mao(){
+                console.log('maomaomao')
+            }
+        }
+
+        var cat = new Cat('小猫');
+        cat.mao();
+        console.log(cat.name);
+        var a = new Perpel('小彭')
+        console.log(a.name)
+        //a.play();
+        //a.eat();
+        </script>
 </body>
 </html>

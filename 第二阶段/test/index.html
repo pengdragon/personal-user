@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+    *{padding:0;margin:0}
+    ul,li{list-style: none;}
+
+    html{
+        /* font-size: 26.67vw; */
+    }
+        .first{
+            width: 300px;
+            margin:0px auto;
+            min-height:100px;
+            border:5px solid #f5f5f5;
+            position: relative;
+        }
+        .firli{
+            height: 20px;
+            width:200px;
+            background: orange;
+        }
+       .firstone{
+          height: 20px;
+          background: blue;
+          float:left;
+        line-height: 20px;
+        }
+        .firsttwo{
+            float:left;
+            height: 20px;
+            font-size: 12px;
+            line-height: 20px;
+        }
+        .second{
+            width:200px;
+            height: 200px;
+            display: none;
+        }
+        .second li{
+            height: 30px;
+        }
+        .second div:nth-of-type(2n+1){
+            background: yellow;
+            float:left;
+            font-size: 20px;
+            text-align: center;
+        }
+        .second div:nth-of-type(2n){
+            background:green;
+            float:left;
+            font-size: 12px;
+            text-align: center;
+            margin-top:4px;
+        }
+    </style>
+</head>
+<body>
+    <ul  class="first">
+        <li class="firli">
+            <div class="firstone"></div>
+            <div class="firsttwo"></div>
+            <ul class="second">
+                <li>
+                    <div ></div>
+                    <div ></div>
+                </li>
+                <li >
+                    <div ></div>
+                    <div ></div>
+                </li>
+                <li >
+                    <div ></div>
+                    <div ></div>
+                </li>
+            </ul>
+        </li>
+        <li>
+            <div class="firstone"></div>
+            <div class="firsttwo"></div>
+            <ul class="second">
+                <li>
+                    <div></div>
+                    <div></div>
+                </li>
+                <li>
+                    <div></div>
+                    <div></div>
+                </li>
+                <li>
+                    <div></div>
+                    <div></div>
+                   
+                </li>
+                
+            </ul>
+        </li>
+        <li>
+            <div class="firstone"></div>
+            <div class="firsttwo"></div>
+            <ul class="thed">
+                <li>
+                    <div></div>
+                    <div></div>
+                </li>
+                <li>
+                    <div></div>
+                    <div></div>
+                </li>
+                <li>
+                    <div></div>
+                    <div></div>
+                   
+                </li>
+                <li>
+                    <div></div>
+                    <div></div>
+                   
+                </li>
+            </ul>
+        </li>
+        <li>
+            <div class="firstone"></div>
+            <div class="firsttwo"></div>
+            <ul class="four">
+                <li>
+                    <div></div>
+                    <div></div>
+                </li>
+              
+            </ul>
+        </li>
+    </ul>
+    <script src="jquery.js"></script>
+    <script src="index.js"></script>
+    <script>
+    var menu = new Menu();
+    menu.init();
+    </script>
+</body>
+</html>
